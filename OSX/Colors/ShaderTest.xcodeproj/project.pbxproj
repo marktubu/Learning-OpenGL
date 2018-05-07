@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1837351B20A056850071BDED /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1837351A20A056850071BDED /* main.cpp */; };
+		1837352320A05C570071BDED /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18DB5934209B0D0F00C3BB7F /* GLUT.framework */; };
+		1837352420A05C570071BDED /* libGLEW.2.1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 18DB5932209B0C0900C3BB7F /* libGLEW.2.1.0.dylib */; };
+		1837352520A05C570071BDED /* libglfw.3.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 18DB5939209B0FD700C3BB7F /* libglfw.3.2.dylib */; };
+		1837352620A05C570071BDED /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A1F76F209AECB000115EDE /* OpenGL.framework */; };
+		1837352720A05C5E0071BDED /* glad.c in Sources */ = {isa = PBXBuildFile; fileRef = 18DB593F209B100700C3BB7F /* glad.c */; };
 		18A1F64A209AE42300115EDE /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18A1F649209AE42300115EDE /* main.cpp */; };
 		18A1F770209AECB000115EDE /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A1F76F209AECB000115EDE /* OpenGL.framework */; };
 		18DB5933209B0C0900C3BB7F /* libGLEW.2.1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 18DB5932209B0C0900C3BB7F /* libGLEW.2.1.0.dylib */; };
@@ -16,6 +22,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		1837351620A056850071BDED /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
 		18A1F644209AE42300115EDE /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -35,6 +50,12 @@
 		1837351120A036DE0071BDED /* filesystem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = filesystem.h; sourceTree = "<group>"; };
 		1837351220A037B10071BDED /* lamp.vs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = lamp.vs; sourceTree = "<group>"; };
 		1837351320A038350071BDED /* lamp.fs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = lamp.fs; sourceTree = "<group>"; };
+		1837351820A056850071BDED /* BasicLighting */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = BasicLighting; sourceTree = BUILT_PRODUCTS_DIR; };
+		1837351A20A056850071BDED /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		1837351F20A057C90071BDED /* basiclighting.vs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = basiclighting.vs; sourceTree = "<group>"; };
+		1837352020A057DE0071BDED /* basiclighting.fs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = basiclighting.fs; sourceTree = "<group>"; };
+		1837352120A057EF0071BDED /* lamp.vs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = lamp.vs; sourceTree = "<group>"; };
+		1837352220A057FA0071BDED /* lamp.fs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = lamp.fs; sourceTree = "<group>"; };
 		18A1F646209AE42300115EDE /* ShaderTest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ShaderTest; sourceTree = BUILT_PRODUCTS_DIR; };
 		18A1F649209AE42300115EDE /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		18A1F655209AE6E800115EDE /* CMakeLists.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = "<group>"; };
@@ -318,6 +339,17 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		1837351520A056850071BDED /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1837352320A05C570071BDED /* GLUT.framework in Frameworks */,
+				1837352420A05C570071BDED /* libGLEW.2.1.0.dylib in Frameworks */,
+				1837352520A05C570071BDED /* libglfw.3.2.dylib in Frameworks */,
+				1837352620A05C570071BDED /* OpenGL.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		18A1F643209AE42300115EDE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -332,10 +364,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1837351920A056850071BDED /* BasicLighting */ = {
+			isa = PBXGroup;
+			children = (
+				1837351A20A056850071BDED /* main.cpp */,
+				1837351F20A057C90071BDED /* basiclighting.vs */,
+				1837352020A057DE0071BDED /* basiclighting.fs */,
+				1837352120A057EF0071BDED /* lamp.vs */,
+				1837352220A057FA0071BDED /* lamp.fs */,
+			);
+			path = BasicLighting;
+			sourceTree = "<group>";
+		};
 		18A1F63D209AE42300115EDE = {
 			isa = PBXGroup;
 			children = (
 				18A1F648209AE42300115EDE /* ShaderTest */,
+				1837351920A056850071BDED /* BasicLighting */,
 				18A1F647209AE42300115EDE /* Products */,
 				18A1F651209AE56800115EDE /* Frameworks */,
 			);
@@ -345,6 +390,7 @@
 			isa = PBXGroup;
 			children = (
 				18A1F646209AE42300115EDE /* ShaderTest */,
+				1837351820A056850071BDED /* BasicLighting */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -748,6 +794,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		1837351720A056850071BDED /* BasicLighting */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1837351E20A056850071BDED /* Build configuration list for PBXNativeTarget "BasicLighting" */;
+			buildPhases = (
+				1837351420A056850071BDED /* Sources */,
+				1837351520A056850071BDED /* Frameworks */,
+				1837351620A056850071BDED /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BasicLighting;
+			productName = BasicLighting;
+			productReference = 1837351820A056850071BDED /* BasicLighting */;
+			productType = "com.apple.product-type.tool";
+		};
 		18A1F645209AE42300115EDE /* ShaderTest */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 18A1F64D209AE42300115EDE /* Build configuration list for PBXNativeTarget "ShaderTest" */;
@@ -774,6 +837,10 @@
 				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = tubu;
 				TargetAttributes = {
+					1837351720A056850071BDED = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
 					18A1F645209AE42300115EDE = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
@@ -793,11 +860,21 @@
 			projectRoot = "";
 			targets = (
 				18A1F645209AE42300115EDE /* ShaderTest */,
+				1837351720A056850071BDED /* BasicLighting */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
+		1837351420A056850071BDED /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1837351B20A056850071BDED /* main.cpp in Sources */,
+				1837352720A05C5E0071BDED /* glad.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		18A1F642209AE42300115EDE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -810,6 +887,32 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		1837351C20A056850071BDED /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/ShaderTest/Headers\"";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		1837351D20A056850071BDED /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/ShaderTest/Headers\"";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		18A1F64B209AE42300115EDE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -942,6 +1045,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		1837351E20A056850071BDED /* Build configuration list for PBXNativeTarget "BasicLighting" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1837351C20A056850071BDED /* Debug */,
+				1837351D20A056850071BDED /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		18A1F641209AE42300115EDE /* Build configuration list for PBXProject "ShaderTest" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
