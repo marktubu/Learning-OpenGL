@@ -56,6 +56,7 @@
 		1837352020A057DE0071BDED /* basiclighting.fs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = basiclighting.fs; sourceTree = "<group>"; };
 		1837352120A057EF0071BDED /* lamp.vs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = lamp.vs; sourceTree = "<group>"; };
 		1837352220A057FA0071BDED /* lamp.fs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = lamp.fs; sourceTree = "<group>"; };
+		187CF4B920A14C19003D721F /* camera2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = camera2.h; sourceTree = "<group>"; };
 		18A1F646209AE42300115EDE /* ShaderTest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ShaderTest; sourceTree = BUILT_PRODUCTS_DIR; };
 		18A1F649209AE42300115EDE /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		18A1F655209AE6E800115EDE /* CMakeLists.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = "<group>"; };
@@ -372,6 +373,7 @@
 				1837352020A057DE0071BDED /* basiclighting.fs */,
 				1837352120A057EF0071BDED /* lamp.vs */,
 				1837352220A057FA0071BDED /* lamp.fs */,
+				187CF4B920A14C19003D721F /* camera2.h */,
 			);
 			path = BasicLighting;
 			sourceTree = "<group>";
@@ -891,7 +893,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/ShaderTest/Headers\"";
+				HEADER_SEARCH_PATHS = (
+					"\"$(SRCROOT)/ShaderTest/Headers\"",
+					"\"$(SRCROOT)/BasicLighting\"",
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -904,7 +909,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/ShaderTest/Headers\"";
+				HEADER_SEARCH_PATHS = (
+					"\"$(SRCROOT)/ShaderTest/Headers\"",
+					"\"$(SRCROOT)/BasicLighting\"",
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
