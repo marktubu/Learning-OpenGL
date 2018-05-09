@@ -7,7 +7,7 @@
 
 #include <filesystem.h>
 #include <shader_m.h>
-#include <camera2.h>
+#include <camera.h>
 
 #include <iostream>
 
@@ -21,7 +21,7 @@ const unsigned int SCR_WIDTH = 800;
 const unsigned int SCR_HEIGHT = 600;
 
 // camera
-camera camera(glm::vec3(0.0f, 0.0f, 3.0f));
+Camera camera(glm::vec3(0.0f, 0.0f, 3.0f));
 float lastX = SCR_WIDTH / 2.0f;
 float lastY = SCR_HEIGHT / 2.0f;
 bool firstMouse = true;
@@ -61,7 +61,7 @@ int main()
     glfwSetScrollCallback(window, scroll_callback);
     
     // tell GLFW to capture our mouse
-    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
     
     // glad: load all OpenGL function pointers
     // ---------------------------------------
@@ -77,8 +77,8 @@ int main()
     
     // build and compile our shader zprogram
     // ------------------------------------
-    Shader lightingShader("basiclighting.vs", "basiclighting.fs");
-    Shader lampShader("lamp.vs", "lamp.fs");
+    Shader lightingShader("/Users/apple/CG/LearnOpenGL/OSX/Colors/BasicLighting/basiclighting.vs", "/Users/apple/CG/LearnOpenGL/OSX/Colors/BasicLighting/basiclighting.fs");
+    Shader lampShader("/Users/apple/CG/LearnOpenGL/OSX/Colors/BasicLighting/lamp.vs", "/Users/apple/CG/LearnOpenGL/OSX/Colors/BasicLighting/lamp.fs");
     
     // set up vertex data (and buffer(s)) and configure vertex attributes
     // ------------------------------------------------------------------
@@ -170,7 +170,7 @@ int main()
         
         // render
         // ------
-        glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
+        glClearColor(1.0f, 0.1f, 0.1f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         
         // be sure to activate shader when setting uniforms/drawing objects
@@ -200,7 +200,7 @@ int main()
         lampShader.setMat4("view", view);
         model = glm::mat4();
         model = glm::translate(model, lightPos);
-        model = glm::scale(model, glm::vec3(0.2f)); // a smaller cube
+        model = glm::scale(model, glm::vec3(0.5f)); // a smaller cube
         lampShader.setMat4("model", model);
         
         glBindVertexArray(lightVAO);

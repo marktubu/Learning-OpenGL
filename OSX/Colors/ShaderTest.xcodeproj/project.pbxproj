@@ -10,14 +10,14 @@
 		1837351B20A056850071BDED /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1837351A20A056850071BDED /* main.cpp */; };
 		1837352320A05C570071BDED /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18DB5934209B0D0F00C3BB7F /* GLUT.framework */; };
 		1837352420A05C570071BDED /* libGLEW.2.1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 18DB5932209B0C0900C3BB7F /* libGLEW.2.1.0.dylib */; };
-		1837352520A05C570071BDED /* libglfw.3.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 18DB5939209B0FD700C3BB7F /* libglfw.3.2.dylib */; };
 		1837352620A05C570071BDED /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A1F76F209AECB000115EDE /* OpenGL.framework */; };
 		1837352720A05C5E0071BDED /* glad.c in Sources */ = {isa = PBXBuildFile; fileRef = 18DB593F209B100700C3BB7F /* glad.c */; };
 		18A1F64A209AE42300115EDE /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18A1F649209AE42300115EDE /* main.cpp */; };
 		18A1F770209AECB000115EDE /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A1F76F209AECB000115EDE /* OpenGL.framework */; };
+		18AA75DD20A2DF9A00EE4C01 /* libglfw.3.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 18AA75DC20A2DF9A00EE4C01 /* libglfw.3.3.dylib */; };
+		18AA75DE20A2F11200EE4C01 /* libglfw.3.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 18AA75DC20A2DF9A00EE4C01 /* libglfw.3.3.dylib */; };
 		18DB5933209B0C0900C3BB7F /* libGLEW.2.1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 18DB5932209B0C0900C3BB7F /* libGLEW.2.1.0.dylib */; };
 		18DB5935209B0D0F00C3BB7F /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18DB5934209B0D0F00C3BB7F /* GLUT.framework */; };
-		18DB593A209B0FD700C3BB7F /* libglfw.3.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 18DB5939209B0FD700C3BB7F /* libglfw.3.2.dylib */; };
 		18DB5940209B100700C3BB7F /* glad.c in Sources */ = {isa = PBXBuildFile; fileRef = 18DB593F209B100700C3BB7F /* glad.c */; };
 /* End PBXBuildFile section */
 
@@ -323,14 +323,14 @@
 		18A1F75F209AE6E800115EDE /* vec4.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = vec4.hpp; sourceTree = "<group>"; };
 		18A1F760209AE6E800115EDE /* vector_relational.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = vector_relational.hpp; sourceTree = "<group>"; };
 		18A1F76F209AECB000115EDE /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		18AA75D620A2D0B500EE4C01 /* glfw3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glfw3.h; sourceTree = "<group>"; };
+		18AA75D720A2D0B500EE4C01 /* glfw3native.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glfw3native.h; sourceTree = "<group>"; };
+		18AA75DC20A2DF9A00EE4C01 /* libglfw.3.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libglfw.3.3.dylib; sourceTree = "<group>"; };
 		18DB592F209B0BF400C3BB7F /* glew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glew.h; sourceTree = "<group>"; };
 		18DB5930209B0BF400C3BB7F /* glxew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glxew.h; sourceTree = "<group>"; };
 		18DB5931209B0BF400C3BB7F /* wglew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wglew.h; sourceTree = "<group>"; };
 		18DB5932209B0C0900C3BB7F /* libGLEW.2.1.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libGLEW.2.1.0.dylib; sourceTree = "<group>"; };
 		18DB5934209B0D0F00C3BB7F /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
-		18DB5937209B0FBE00C3BB7F /* glfw3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glfw3.h; sourceTree = "<group>"; };
-		18DB5938209B0FBE00C3BB7F /* glfw3native.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glfw3native.h; sourceTree = "<group>"; };
-		18DB5939209B0FD700C3BB7F /* libglfw.3.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libglfw.3.2.dylib; sourceTree = "<group>"; };
 		18DB593C209B0FF200C3BB7F /* glad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glad.h; sourceTree = "<group>"; };
 		18DB593E209B0FF200C3BB7F /* khrplatform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = khrplatform.h; sourceTree = "<group>"; };
 		18DB593F209B100700C3BB7F /* glad.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = glad.c; sourceTree = "<group>"; };
@@ -345,8 +345,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				1837352320A05C570071BDED /* GLUT.framework in Frameworks */,
+				18AA75DD20A2DF9A00EE4C01 /* libglfw.3.3.dylib in Frameworks */,
 				1837352420A05C570071BDED /* libGLEW.2.1.0.dylib in Frameworks */,
-				1837352520A05C570071BDED /* libglfw.3.2.dylib in Frameworks */,
 				1837352620A05C570071BDED /* OpenGL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -357,8 +357,8 @@
 			files = (
 				18DB5935209B0D0F00C3BB7F /* GLUT.framework in Frameworks */,
 				18DB5933209B0C0900C3BB7F /* libGLEW.2.1.0.dylib in Frameworks */,
+				18AA75DE20A2F11200EE4C01 /* libglfw.3.3.dylib in Frameworks */,
 				18A1F770209AECB000115EDE /* OpenGL.framework in Frameworks */,
-				18DB593A209B0FD700C3BB7F /* libglfw.3.2.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,9 +415,9 @@
 		18A1F650209AE47000115EDE /* Headers */ = {
 			isa = PBXGroup;
 			children = (
+				18AA75D520A2D0B500EE4C01 /* GLFW */,
 				18DB593B209B0FF200C3BB7F /* glad */,
 				18DB593D209B0FF200C3BB7F /* KHR */,
-				18DB5936209B0FBE00C3BB7F /* GLFW */,
 				18DB592E209B0BF400C3BB7F /* GL */,
 				18A1F654209AE6E800115EDE /* glm */,
 				18F0D010209C4FBA0048A3DD /* shader.h */,
@@ -433,9 +433,9 @@
 		18A1F651209AE56800115EDE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				18AA75DC20A2DF9A00EE4C01 /* libglfw.3.3.dylib */,
 				18DB5934209B0D0F00C3BB7F /* GLUT.framework */,
 				18DB5932209B0C0900C3BB7F /* libGLEW.2.1.0.dylib */,
-				18DB5939209B0FD700C3BB7F /* libglfw.3.2.dylib */,
 				18A1F76F209AECB000115EDE /* OpenGL.framework */,
 			);
 			name = Frameworks;
@@ -751,6 +751,16 @@
 			path = simd;
 			sourceTree = "<group>";
 		};
+		18AA75D520A2D0B500EE4C01 /* GLFW */ = {
+			isa = PBXGroup;
+			children = (
+				18AA75D620A2D0B500EE4C01 /* glfw3.h */,
+				18AA75D720A2D0B500EE4C01 /* glfw3native.h */,
+			);
+			name = GLFW;
+			path = ShaderTest/Headers/GLFW;
+			sourceTree = SOURCE_ROOT;
+		};
 		18DB592E209B0BF400C3BB7F /* GL */ = {
 			isa = PBXGroup;
 			children = (
@@ -759,15 +769,6 @@
 				18DB5931209B0BF400C3BB7F /* wglew.h */,
 			);
 			path = GL;
-			sourceTree = "<group>";
-		};
-		18DB5936209B0FBE00C3BB7F /* GLFW */ = {
-			isa = PBXGroup;
-			children = (
-				18DB5937209B0FBE00C3BB7F /* glfw3.h */,
-				18DB5938209B0FBE00C3BB7F /* glfw3native.h */,
-			);
-			path = GLFW;
 			sourceTree = "<group>";
 		};
 		18DB593B209B0FF200C3BB7F /* glad */ = {
@@ -902,6 +903,7 @@
 					"$(PROJECT_DIR)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				REZ_SEARCH_PATHS = "$(PROJECT_DIR)";
 			};
 			name = Debug;
 		};
@@ -918,6 +920,7 @@
 					"$(PROJECT_DIR)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				REZ_SEARCH_PATHS = "$(PROJECT_DIR)";
 			};
 			name = Release;
 		};
