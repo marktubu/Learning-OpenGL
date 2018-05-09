@@ -16,6 +16,7 @@
 		18A1F770209AECB000115EDE /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A1F76F209AECB000115EDE /* OpenGL.framework */; };
 		18AA75DD20A2DF9A00EE4C01 /* libglfw.3.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 18AA75DC20A2DF9A00EE4C01 /* libglfw.3.3.dylib */; };
 		18AA75DE20A2F11200EE4C01 /* libglfw.3.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 18AA75DC20A2DF9A00EE4C01 /* libglfw.3.3.dylib */; };
+		18AA75E620A2FDC300EE4C01 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18AA75E520A2FDC300EE4C01 /* main.cpp */; };
 		18DB5933209B0C0900C3BB7F /* libGLEW.2.1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 18DB5932209B0C0900C3BB7F /* libGLEW.2.1.0.dylib */; };
 		18DB5935209B0D0F00C3BB7F /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18DB5934209B0D0F00C3BB7F /* GLUT.framework */; };
 		18DB5940209B100700C3BB7F /* glad.c in Sources */ = {isa = PBXBuildFile; fileRef = 18DB593F209B100700C3BB7F /* glad.c */; };
@@ -32,6 +33,15 @@
 			runOnlyForDeploymentPostprocessing = 1;
 		};
 		18A1F644209AE42300115EDE /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		18AA75E120A2FDC200EE4C01 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -326,6 +336,8 @@
 		18AA75D620A2D0B500EE4C01 /* glfw3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glfw3.h; sourceTree = "<group>"; };
 		18AA75D720A2D0B500EE4C01 /* glfw3native.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glfw3native.h; sourceTree = "<group>"; };
 		18AA75DC20A2DF9A00EE4C01 /* libglfw.3.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libglfw.3.3.dylib; sourceTree = "<group>"; };
+		18AA75E320A2FDC200EE4C01 /* DepthTest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = DepthTest; sourceTree = BUILT_PRODUCTS_DIR; };
+		18AA75E520A2FDC300EE4C01 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		18DB592F209B0BF400C3BB7F /* glew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glew.h; sourceTree = "<group>"; };
 		18DB5930209B0BF400C3BB7F /* glxew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glxew.h; sourceTree = "<group>"; };
 		18DB5931209B0BF400C3BB7F /* wglew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wglew.h; sourceTree = "<group>"; };
@@ -362,6 +374,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		18AA75E020A2FDC200EE4C01 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -383,6 +402,7 @@
 			children = (
 				18A1F648209AE42300115EDE /* ShaderTest */,
 				1837351920A056850071BDED /* BasicLighting */,
+				18AA75E420A2FDC200EE4C01 /* DepthTest */,
 				18A1F647209AE42300115EDE /* Products */,
 				18A1F651209AE56800115EDE /* Frameworks */,
 			);
@@ -393,6 +413,7 @@
 			children = (
 				18A1F646209AE42300115EDE /* ShaderTest */,
 				1837351820A056850071BDED /* BasicLighting */,
+				18AA75E320A2FDC200EE4C01 /* DepthTest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -761,6 +782,14 @@
 			path = ShaderTest/Headers/GLFW;
 			sourceTree = SOURCE_ROOT;
 		};
+		18AA75E420A2FDC200EE4C01 /* DepthTest */ = {
+			isa = PBXGroup;
+			children = (
+				18AA75E520A2FDC300EE4C01 /* main.cpp */,
+			);
+			path = DepthTest;
+			sourceTree = "<group>";
+		};
 		18DB592E209B0BF400C3BB7F /* GL */ = {
 			isa = PBXGroup;
 			children = (
@@ -831,6 +860,23 @@
 			productReference = 18A1F646209AE42300115EDE /* ShaderTest */;
 			productType = "com.apple.product-type.tool";
 		};
+		18AA75E220A2FDC200EE4C01 /* DepthTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 18AA75E720A2FDC300EE4C01 /* Build configuration list for PBXNativeTarget "DepthTest" */;
+			buildPhases = (
+				18AA75DF20A2FDC200EE4C01 /* Sources */,
+				18AA75E020A2FDC200EE4C01 /* Frameworks */,
+				18AA75E120A2FDC200EE4C01 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DepthTest;
+			productName = DepthTest;
+			productReference = 18AA75E320A2FDC200EE4C01 /* DepthTest */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -845,6 +891,10 @@
 						ProvisioningStyle = Automatic;
 					};
 					18A1F645209AE42300115EDE = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					18AA75E220A2FDC200EE4C01 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
 					};
@@ -864,6 +914,7 @@
 			targets = (
 				18A1F645209AE42300115EDE /* ShaderTest */,
 				1837351720A056850071BDED /* BasicLighting */,
+				18AA75E220A2FDC200EE4C01 /* DepthTest */,
 			);
 		};
 /* End PBXProject section */
@@ -884,6 +935,14 @@
 			files = (
 				18A1F64A209AE42300115EDE /* main.cpp in Sources */,
 				18DB5940209B100700C3BB7F /* glad.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		18AA75DF20A2FDC200EE4C01 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18AA75E620A2FDC300EE4C01 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1053,6 +1112,22 @@
 			};
 			name = Release;
 		};
+		18AA75E820A2FDC300EE4C01 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		18AA75E920A2FDC300EE4C01 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1079,6 +1154,15 @@
 			buildConfigurations = (
 				18A1F64E209AE42300115EDE /* Debug */,
 				18A1F64F209AE42300115EDE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		18AA75E720A2FDC300EE4C01 /* Build configuration list for PBXNativeTarget "DepthTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				18AA75E820A2FDC300EE4C01 /* Debug */,
+				18AA75E920A2FDC300EE4C01 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
