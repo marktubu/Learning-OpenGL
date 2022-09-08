@@ -183,8 +183,6 @@ int main()
     // -------------------------------------------------------------------------------------------
     Shader ourShader("../object.vs", "../object.fs");
     ourShader.use();
-    ourShader.setVec3("objectColor", 1.f, 0.5f, 0.3f);
-    ourShader.setVec3("lightColor", 1.f, 1.f, 1.f);
     ourShader.setInt("texture1", 0);
     //ourShader.setInt("texture2", 1);
 
@@ -195,7 +193,7 @@ int main()
 
     Camera camera(glm::vec3(0.f, 0.f, 8.f));
 
-    glm::vec3 lightPos = glm::vec3(1.f, 1.f, -5.f);
+    glm::vec3 lightPos = glm::vec3(0.f, 0.f, -3.f);
 
     // render loop
     // -----------
@@ -226,12 +224,21 @@ int main()
 
         // activate shader
         ourShader.use();
-        ourShader.setVec3("objectColor", 1.f, 0.5f, 0.3f);
-        ourShader.setVec3("lightColor", 1.f, 1.f, 1.f);
         ourShader.setInt("texture1", 0);
         
         ourShader.setMat4("view", view);
         ourShader.setMat4("projection", projection);
+
+        ourShader.setVec3("viewPos", camera.Position);
+        ourShader.setVec3("light.position", lightPos);
+        ourShader.setVec3("light.ambient", 0.2f, 0.2f, 0.2f);
+        ourShader.setVec3("light.diffuse", 0.5f, 0.5f, 0.5f); // 将光照调暗了一些以搭配场景
+        ourShader.setVec3("light.specular", 1.0f, 1.0f, 1.0f);
+
+        ourShader.setVec3("mat.ambient", 1.0f, 0.5f, 0.31f);
+        ourShader.setVec3("mat.diffuse", 1.0f, 0.5f, 0.31f);
+        ourShader.setVec3("mat.specular", 0.5f, 0.5f, 0.5f);
+        ourShader.setFloat("mat.shininess", 32.0f);
 
         // create transformations
         for (int i = 0;i < 2;i++) {
@@ -253,8 +260,6 @@ int main()
         lightShader.use();
         lightShader.setMat4("view", view);
         lightShader.setMat4("projection", projection);
-        lightShader.setVec3("lightPos", lightPos);
-        lightShader.setVec3("viewPos", camera.Position);
 
         glm::mat4 model = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
 
