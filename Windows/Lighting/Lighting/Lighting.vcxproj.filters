@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="头文件\application">
+      <UniqueIdentifier>{90d9d00a-4296-474e-88a4-a3fe689af26b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="shader.h">
@@ -33,11 +36,11 @@
     <ClInclude Include="app.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="blending.h">
+      <Filter>头文件\application</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Source.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Third\glad.c">
       <Filter>源文件</Filter>
     </ClCompile>

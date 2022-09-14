@@ -1,7 +1,8 @@
 #include "app.h"
+#include "blending.h"
 
 int main() {
-	App* app = new App();
+	auto app = new Blending();
 	app->InitWindow();
 	app->Run();
 }
