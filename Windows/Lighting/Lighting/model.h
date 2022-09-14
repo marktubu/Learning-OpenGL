@@ -22,7 +22,7 @@ public:
 	vector<Mesh> meshes;
 	string directory;
 
-	Model(char* path) {
+	Model(const string path) {
 		loadModel(path);
 	}
 
@@ -88,8 +88,8 @@ Mesh Model::processMesh(aiMesh* mesh, const aiScene* scene) {
 
 		if (mesh->HasTextureCoords(0)) {
 			glm::vec2 texcoord;
-			texcoord.x = mesh->mTextureCoords[i]->x;
-			texcoord.y = mesh->mTextureCoords[i]->y;
+			texcoord.x = mesh->mTextureCoords[0][i].x;
+			texcoord.y = mesh->mTextureCoords[0][i].y;
 			vertex.TexCoords = texcoord;
 		}
 		else {

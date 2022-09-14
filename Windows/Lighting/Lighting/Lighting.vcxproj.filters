@@ -39,18 +39,4 @@
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="..\light.frag">
-      <Filter>资源文件</Filter>
-    </None>
-    <None Include="..\light.vert">
-      <Filter>资源文件</Filter>
-    </None>
-    <None Include="..\object.frag">
-      <Filter>资源文件</Filter>
-    </None>
-    <None Include="..\object.vert">
-      <Filter>资源文件</Filter>
-    </None>
-  </ItemGroup>
 </Project>
