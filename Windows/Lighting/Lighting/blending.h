@@ -9,6 +9,7 @@ public:
 
 void Blending::Run() {
     glEnable(GL_DEPTH_TEST);
+    glEnable(GL_CULL_FACE);
 
     // build and compile our shader zprogram
     // ------------------------------------
@@ -22,7 +23,7 @@ void Blending::Run() {
     };
 
     unsigned int indices[] = {
-        0, 1, 2,
+        0, 2, 1,
         2, 1, 3,
     };
 
