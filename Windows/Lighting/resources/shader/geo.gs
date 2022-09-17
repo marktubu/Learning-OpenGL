@@ -34,6 +34,18 @@ vec3 GetNormal(){
 
 void main()
 {
-	vec3 normal = GetNormal();
-	Explode(normal);
+	//vec3 normal = GetNormal();
+	//Explode(normal);
+
+	gl_Position = gl_in[0].gl_Position;
+	oTexCoord = gs_in[0].TexCoord;
+	EmitVertex();
+	gl_Position = gl_in[1].gl_Position;
+	oTexCoord = gs_in[1].TexCoord;
+	EmitVertex();
+	gl_Position = gl_in[2].gl_Position;
+	oTexCoord = gs_in[2].TexCoord;
+	EmitVertex();
+
+	EndPrimitive();
 }
