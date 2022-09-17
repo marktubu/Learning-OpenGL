@@ -17,10 +17,10 @@ void Geometry::Run() {
         , FileSystem::getPath("resources/shader/geo.gs").c_str());
 
     float points[] = {
-        -0.5f,  0.5f, // top-left
-         0.5f,  0.5f, // top-right
-         0.5f, -0.5f, // bottom-right
-        -0.5f, -0.5f  // bottom-left
+    -0.5f,  0.5f, 1.0f, 0.0f, 0.0f, // top-left
+     0.5f,  0.5f, 0.0f, 1.0f, 0.0f, // top-right
+     0.5f, -0.5f, 0.0f, 0.0f, 1.0f, // bottom-right
+    -0.5f, -0.5f, 1.0f, 1.0f, 0.0f  // bottom-left
     };
 
     GLuint VAO, VBO;
@@ -31,7 +31,9 @@ void Geometry::Run() {
     glBufferData(GL_ARRAY_BUFFER, sizeof(points), &points, GL_STATIC_DRAW);
 
     glEnableVertexAttribArray(0);
-    glVertexAttribPointer(0, 2, GL_FLOAT, false, 2*sizeof(float), (void*)0);
+    glVertexAttribPointer(0, 2, GL_FLOAT, false, 5 * sizeof(float), (void*)0);
+    glEnableVertexAttribArray(1);
+    glVertexAttribPointer(1, 3, GL_FLOAT, false, 5 * sizeof(float), (void*)(2 * sizeof(float)));
     
     shader.use();
 
