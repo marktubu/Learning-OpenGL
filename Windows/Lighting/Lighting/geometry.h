@@ -29,7 +29,6 @@ void Geometry::Run() {
     glGenBuffers(1, &VBO);
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
     glBufferData(GL_ARRAY_BUFFER, sizeof(points), &points, GL_STATIC_DRAW);
-    glBindBuffer(GL_ARRAY_BUFFER, 0);
 
     glEnableVertexAttribArray(0);
     glVertexAttribPointer(0, 2, GL_FLOAT, false, 2*sizeof(float), (void*)0);
@@ -57,7 +56,7 @@ void Geometry::Run() {
 
         glBindVertexArray(VAO);
         glDrawArrays(GL_POINTS, 0, 4);
-        glBindVertexArray(0);
+
         // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
         // -------------------------------------------------------------------------------
         glfwSwapBuffers(window);
