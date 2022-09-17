@@ -1,31 +1,39 @@
 #version 330 core
-layout (points) in;
-layout (triangle_strip, max_vertices = 5) out;
+layout (triangles) in;
+layout (triangle_strip, max_vertices = 3) out;
 
 in VS_OUT {
-	vec3 color;
-} vs_in[];
+	vec2 TexCoord;
+} gs_in[];
 
-out vec3 fColor;
+out vec2 oTexCoord;
 
-void build_house(vec4 position){
-	fColor = vec3(1.0);
-	gl_Position = position + vec4(0.0, 0.4, 0.0, 0.0);
+uniform float time;
+
+void Explode(vec3 normal){
+	float delta = sin(time) + 1.0;
+	vec4 offset = vec4(normal * delta, 0.0);
+	gl_Position = gl_in[0].gl_Position + offset;
+	oTexCoord = gs_in[0].TexCoord;
 	EmitVertex();
-	fColor = vs_in[0].color;
-	gl_Position = position + vec4(0.2, 0.2, 0.0, 0.0);
+	gl_Position = gl_in[1].gl_Position + offset;
+	oTexCoord = gs_in[1].TexCoord;
 	EmitVertex();
-	gl_Position = position + vec4(-0.2, 0.2, 0.0, 0.0);
+	gl_Position = gl_in[2].gl_Position + offset;
+	oTexCoord = gs_in[2].TexCoord;
 	EmitVertex();
-	gl_Position = position + vec4(0.2, -0.2, 0.0, 0.0);
-	EmitVertex();
-	gl_Position = position + vec4(-0.2, -0.2, 0.0, 0.0);
-	EmitVertex();
-	
+
 	EndPrimitive();
+}
+
+vec3 GetNormal(){
+	vec3 a = vec3(gl_in[0].gl_Position - gl_in[1].gl_Position);
+	vec3 b = vec3(gl_in[2].gl_Position - gl_in[1].gl_Position);
+	return normalize(cross(a, b));
 }
 
 void main()
 {
-	build_house(gl_in[0].gl_Position);
+	vec3 normal = GetNormal();
+	Explode(normal);
 }
