@@ -3,9 +3,10 @@
 #include "framebuffer.h"
 #include "cubemap.h"
 #include "ubo.h"
+#include "geometry.h"
 
 int main() {
-	auto app = new UBO();
+	auto app = new Geometry();
 	app->InitWindow();
 	app->Run();
 }
