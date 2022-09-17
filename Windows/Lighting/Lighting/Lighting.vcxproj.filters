@@ -48,6 +48,9 @@
     <ClInclude Include="cubemap.h">
       <Filter>头文件\application</Filter>
     </ClInclude>
+    <ClInclude Include="ubo.h">
+      <Filter>头文件\application</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Third\glad.c">

@@ -2,9 +2,10 @@
 #include "blending.h"
 #include "framebuffer.h"
 #include "cubemap.h"
+#include "ubo.h"
 
 int main() {
-	auto app = new CubeMap();
+	auto app = new UBO();
 	app->InitWindow();
 	app->Run();
 }

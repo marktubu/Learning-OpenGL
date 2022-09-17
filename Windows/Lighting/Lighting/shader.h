@@ -163,6 +163,11 @@ public:
 		glUniformMatrix4fv(glGetUniformLocation(ID, name.c_str()), 1, GL_FALSE, &mat[0][0]);
 	}
 
+	void bindUniformBlock(const GLchar* name, GLuint bind_point) {
+		GLuint indices = glGetUniformBlockIndex(ID, name);
+		glUniformBlockBinding(ID, indices, bind_point);
+	}
+
 private:
 	// utility function for checking shader compilation/linking errors.
 	// ------------------------------------------------------------------------
