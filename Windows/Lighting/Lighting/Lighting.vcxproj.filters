@@ -57,6 +57,9 @@
     <ClInclude Include="instancing.h">
       <Filter>头文件\application</Filter>
     </ClInclude>
+    <ClInclude Include="antialiasing.h">
+      <Filter>头文件\application</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Third\glad.c">

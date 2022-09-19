@@ -5,9 +5,10 @@
 #include "ubo.h"
 #include "geometry.h"
 #include "instancing.h"
+#include "antialiasing.h"
 
 int main() {
-	auto app = new Instancing();
+	auto app = new Antialiasing();
 	app->InitWindow();
 	app->Run();
 }
