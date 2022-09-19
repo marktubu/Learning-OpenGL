@@ -4,9 +4,10 @@
 #include "cubemap.h"
 #include "ubo.h"
 #include "geometry.h"
+#include "instancing.h"
 
 int main() {
-	auto app = new Geometry();
+	auto app = new Instancing();
 	app->InitWindow();
 	app->Run();
 }
