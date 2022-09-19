@@ -49,10 +49,14 @@ void Instancing::Run() {
     glEnableVertexAttribArray(1);
     glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(2*sizeof(float)));
 
-    shader.use();
-    for (int i = 0;i < 100;i++) {
-        shader.setVec2("transforms[" + std::to_string(i) + "]", translations[i]);
-    }
+    GLuint transformVBO;
+    glGenBuffers(1, &transformVBO);
+    glBindBuffer(GL_ARRAY_BUFFER, transformVBO);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(translations), translations, GL_STATIC_DRAW);
+
+    glEnableVertexAttribArray(2);
+    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(glm::vec2), 0);
+    glVertexAttribDivisor(2, 1);
 
     while (!glfwWindowShouldClose(window))
     {
