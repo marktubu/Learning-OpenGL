@@ -59,7 +59,8 @@ public:
 
 	glm::mat4 GetViewMatrix()
 	{
-		return glm::lookAt(Position, Position + Front, Up);
+		//return glm::lookAt(Position, Position + Front, Up);
+		return lookAt();
 	}
 
 	void ProcessKeyboard(Camera_Movement direction, float deltaTime)
@@ -113,6 +114,37 @@ private:
 
 		Right = glm::normalize(glm::cross(Front, WorldUp));
 		Up = glm::normalize(glm::cross(Right, Front));
+	}
+
+	// OpenGL is Right-Handed-Coordinate-System
+	// glm::mat4 ÊÇ column based matrix
+	glm::mat4 lookAt() {
+		glm::vec3 forward = -Front;
+		glm::vec3 right = glm::normalize(glm::cross(WorldUp, forward));
+		glm::vec3 up = glm::normalize(glm::cross(forward, right));
+
+		glm::mat4 m(0.0);
+		glm::mat3 rot_m;
+		m[0][0] = rot_m[0][0] = right.x;
+		m[1][0] = rot_m[1][0] = right.y;
+		m[2][0] = rot_m[2][0] = right.z;
+
+		m[0][1] = rot_m[0][1] = up.x;
+		m[1][1] = rot_m[1][1] = up.y;
+		m[2][1] = rot_m[2][1] = up.z;
+
+		m[0][2] = rot_m[0][2] = forward.x;
+		m[1][2] = rot_m[1][2] = forward.y;
+		m[2][2] = rot_m[2][2] = forward.z;
+
+		glm::vec3 mv = -rot_m * Position;
+
+		m[3][0] = mv.x;
+		m[3][1] = mv.y;
+		m[3][2] = mv.z;
+		m[3][3] = 1.0;
+
+		return m;
 	}
 
 };
