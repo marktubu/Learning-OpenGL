@@ -1,0 +1,15 @@
+正确顺序：
+	
+	#include <glad\glad.h>
+	#include <GLFW\glfw3.h>
+
+错误顺序：
+	
+	#include <GLFW\glfw3.h>
+	#include <glad\glad.h>
+
+错误信息：
+
+	header already included, remove this include, glad already provides it
+	
+
