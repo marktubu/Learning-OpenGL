@@ -76,9 +76,9 @@ int main()
     glEnable(GL_DEPTH_TEST);
     
     // build and compile our shader zprogram
-    // ------------------------------------
-    Shader lightingShader("/Users/apple/CG/LearnOpenGL/OSX/Colors/BasicLighting/basiclighting.vs", "/Users/apple/CG/LearnOpenGL/OSX/Colors/BasicLighting/basiclighting.fs");
-    Shader lampShader("/Users/apple/CG/LearnOpenGL/OSX/Colors/BasicLighting/lamp.vs", "/Users/apple/CG/LearnOpenGL/OSX/Colors/BasicLighting/lamp.fs");
+    // ------------------------------------/Users/admin/OpenGL/LearningOpenGL/OSX/Colors/BasicLighting
+    Shader lightingShader("/Users/admin/OpenGL/LearningOpenGL/OSX/Colors/BasicLighting/basiclighting.vs", "/Users/admin/OpenGL/LearningOpenGL/OSX/Colors/BasicLighting/basiclighting.fs");
+    Shader lampShader("/Users/admin/OpenGL/LearningOpenGL/OSX/Colors/BasicLighting/lamp.vs", "/Users/admin/OpenGL/LearningOpenGL/OSX/Colors/BasicLighting/lamp.fs");
     
     // set up vertex data (and buffer(s)) and configure vertex attributes
     // ------------------------------------------------------------------
@@ -170,7 +170,7 @@ int main()
         
         // render
         // ------
-        glClearColor(1.0f, 0.1f, 0.1f, 1.0f);
+        glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         
         // be sure to activate shader when setting uniforms/drawing objects

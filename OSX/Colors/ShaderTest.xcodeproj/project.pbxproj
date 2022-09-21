@@ -425,7 +425,6 @@
 				1837350D20A0208A0071BDED /* colors.fs */,
 				1837351220A037B10071BDED /* lamp.vs */,
 				1837351320A038350071BDED /* lamp.fs */,
-				18F0D011209C50A40048A3DD /* Shaders */,
 				18A1F650209AE47000115EDE /* Headers */,
 				18A1F649209AE42300115EDE /* main.cpp */,
 				18DB593F209B100700C3BB7F /* glad.c */,
@@ -814,13 +813,6 @@
 				18DB593E209B0FF200C3BB7F /* khrplatform.h */,
 			);
 			path = KHR;
-			sourceTree = "<group>";
-		};
-		18F0D011209C50A40048A3DD /* Shaders */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Shaders;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
