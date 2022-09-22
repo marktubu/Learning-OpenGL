@@ -13,10 +13,38 @@
 		18DB5935209B0D0F00C3BB7F /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18DB5934209B0D0F00C3BB7F /* GLUT.framework */; };
 		18DB593A209B0FD700C3BB7F /* libglfw.3.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 18DB5939209B0FD700C3BB7F /* libglfw.3.2.dylib */; };
 		18DB5940209B100700C3BB7F /* glad.c in Sources */ = {isa = PBXBuildFile; fileRef = 18DB593F209B100700C3BB7F /* glad.c */; };
+		84B7968F210DC275007C0842 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84B7968E210DC275007C0842 /* main.cpp */; };
+		84B79695210DF69A007C0842 /* game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84B79693210DF69A007C0842 /* game.cpp */; };
+		84B79697210DF749007C0842 /* shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84B79696210DF749007C0842 /* shader.cpp */; };
+		84B7969A210DF789007C0842 /* resource_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84B79699210DF789007C0842 /* resource_manager.cpp */; };
+		84B7969D210DF7BE007C0842 /* texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84B7969B210DF7BE007C0842 /* texture.cpp */; };
+		84B796A0210DF8AE007C0842 /* SOIL.c in Sources */ = {isa = PBXBuildFile; fileRef = 84B7969E210DF8AD007C0842 /* SOIL.c */; };
+		84B796A7210DF8FB007C0842 /* stb_image_aug.c in Sources */ = {isa = PBXBuildFile; fileRef = 84B796A2210DF8FA007C0842 /* stb_image_aug.c */; };
+		84B796A8210DF8FB007C0842 /* image_DXT.c in Sources */ = {isa = PBXBuildFile; fileRef = 84B796A4210DF8FB007C0842 /* image_DXT.c */; };
+		84B796A9210DF8FB007C0842 /* image_helper.c in Sources */ = {isa = PBXBuildFile; fileRef = 84B796A5210DF8FB007C0842 /* image_helper.c */; };
+		84B796AE210DFDB4007C0842 /* sprite_renderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84B796AC210DFDB4007C0842 /* sprite_renderer.cpp */; };
+		84B796B3210E2831007C0842 /* awesomeface.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 84B796B2210E26AD007C0842 /* awesomeface.png */; };
+		84B796B5210E28BA007C0842 /* awesomeface.png in Resources */ = {isa = PBXBuildFile; fileRef = 84B796B2210E26AD007C0842 /* awesomeface.png */; };
+		84B796B6210E2A9B007C0842 /* sprite.vs in Resources */ = {isa = PBXBuildFile; fileRef = 84B796AA210DFB30007C0842 /* sprite.vs */; };
+		84B796B7210E2A9D007C0842 /* sprite.fs in Resources */ = {isa = PBXBuildFile; fileRef = 84B796AB210DFCD6007C0842 /* sprite.fs */; };
+		84B796B8210E2C72007C0842 /* sprite.vs in CopyFiles */ = {isa = PBXBuildFile; fileRef = 84B796AA210DFB30007C0842 /* sprite.vs */; };
+		84B796B9210E2C74007C0842 /* sprite.fs in CopyFiles */ = {isa = PBXBuildFile; fileRef = 84B796AB210DFCD6007C0842 /* sprite.fs */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		18A1F644209AE42300115EDE /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = usr/share/man/man1;
+			dstSubfolderSpec = 7;
+			files = (
+				84B796B9210E2C74007C0842 /* sprite.fs in CopyFiles */,
+				84B796B3210E2831007C0842 /* awesomeface.png in CopyFiles */,
+				84B796B8210E2C72007C0842 /* sprite.vs in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		84B7968A210DC275007C0842 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -308,6 +336,28 @@
 		18F0D010209C4FBA0048A3DD /* shader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = shader.h; sourceTree = "<group>"; };
 		18F0D012209C52120048A3DD /* shader.vs */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; name = shader.vs; path = ShaderTest/Shaders/shader.vs; sourceTree = SOURCE_ROOT; };
 		18F0D013209C53960048A3DD /* stb_image.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = stb_image.h; sourceTree = "<group>"; };
+		84B7968C210DC275007C0842 /* Texture */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Texture; sourceTree = BUILT_PRODUCTS_DIR; };
+		84B7968E210DC275007C0842 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		84B79693210DF69A007C0842 /* game.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = game.cpp; sourceTree = "<group>"; };
+		84B79694210DF69A007C0842 /* game.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = game.h; sourceTree = "<group>"; };
+		84B79696210DF749007C0842 /* shader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = shader.cpp; sourceTree = "<group>"; };
+		84B79698210DF767007C0842 /* resource_manager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = resource_manager.h; sourceTree = "<group>"; };
+		84B79699210DF789007C0842 /* resource_manager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = resource_manager.cpp; sourceTree = "<group>"; };
+		84B7969B210DF7BE007C0842 /* texture.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = texture.cpp; sourceTree = "<group>"; };
+		84B7969C210DF7BE007C0842 /* texture.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = texture.h; sourceTree = "<group>"; };
+		84B7969E210DF8AD007C0842 /* SOIL.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = SOIL.c; sourceTree = "<group>"; };
+		84B7969F210DF8AE007C0842 /* SOIL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOIL.h; sourceTree = "<group>"; };
+		84B796A1210DF8FA007C0842 /* image_DXT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = image_DXT.h; sourceTree = "<group>"; };
+		84B796A2210DF8FA007C0842 /* stb_image_aug.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = stb_image_aug.c; sourceTree = "<group>"; };
+		84B796A3210DF8FA007C0842 /* stb_image_aug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stb_image_aug.h; sourceTree = "<group>"; };
+		84B796A4210DF8FB007C0842 /* image_DXT.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = image_DXT.c; sourceTree = "<group>"; };
+		84B796A5210DF8FB007C0842 /* image_helper.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = image_helper.c; sourceTree = "<group>"; };
+		84B796A6210DF8FB007C0842 /* image_helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = image_helper.h; sourceTree = "<group>"; };
+		84B796AA210DFB30007C0842 /* sprite.vs */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; path = sprite.vs; sourceTree = "<group>"; };
+		84B796AB210DFCD6007C0842 /* sprite.fs */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; path = sprite.fs; sourceTree = "<group>"; };
+		84B796AC210DFDB4007C0842 /* sprite_renderer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = sprite_renderer.cpp; sourceTree = "<group>"; };
+		84B796AD210DFDB4007C0842 /* sprite_renderer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = sprite_renderer.h; sourceTree = "<group>"; };
+		84B796B2210E26AD007C0842 /* awesomeface.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = awesomeface.png; path = ShaderTest/awesomeface.png; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -322,6 +372,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		84B79689210DC275007C0842 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -329,6 +386,7 @@
 			isa = PBXGroup;
 			children = (
 				18A1F648209AE42300115EDE /* ShaderTest */,
+				84B7968D210DC275007C0842 /* Texture */,
 				18A1F647209AE42300115EDE /* Products */,
 				18A1F651209AE56800115EDE /* Frameworks */,
 			);
@@ -338,6 +396,7 @@
 			isa = PBXGroup;
 			children = (
 				18A1F646209AE42300115EDE /* ShaderTest */,
+				84B7968C210DC275007C0842 /* Texture */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -345,10 +404,15 @@
 		18A1F648209AE42300115EDE /* ShaderTest */ = {
 			isa = PBXGroup;
 			children = (
-				18F0D011209C50A40048A3DD /* Shaders */,
+				84B796B0210E24B4007C0842 /* texture */,
+				18F0D011209C50A40048A3DD /* shaders */,
 				18A1F650209AE47000115EDE /* Headers */,
 				18A1F649209AE42300115EDE /* main.cpp */,
 				18DB593F209B100700C3BB7F /* glad.c */,
+				84B79693210DF69A007C0842 /* game.cpp */,
+				84B79696210DF749007C0842 /* shader.cpp */,
+				84B79699210DF789007C0842 /* resource_manager.cpp */,
+				84B7969B210DF7BE007C0842 /* texture.cpp */,
 			);
 			path = ShaderTest;
 			sourceTree = "<group>";
@@ -356,13 +420,26 @@
 		18A1F650209AE47000115EDE /* Headers */ = {
 			isa = PBXGroup;
 			children = (
+				84B796A4210DF8FB007C0842 /* image_DXT.c */,
+				84B796A1210DF8FA007C0842 /* image_DXT.h */,
+				84B796A5210DF8FB007C0842 /* image_helper.c */,
+				84B796A6210DF8FB007C0842 /* image_helper.h */,
+				84B796A2210DF8FA007C0842 /* stb_image_aug.c */,
+				84B796A3210DF8FA007C0842 /* stb_image_aug.h */,
 				18DB593B209B0FF200C3BB7F /* glad */,
 				18DB593D209B0FF200C3BB7F /* KHR */,
 				18DB5936209B0FBE00C3BB7F /* GLFW */,
 				18DB592E209B0BF400C3BB7F /* GL */,
 				18A1F654209AE6E800115EDE /* glm */,
 				18F0D010209C4FBA0048A3DD /* shader.h */,
+				84B7969E210DF8AD007C0842 /* SOIL.c */,
+				84B7969F210DF8AE007C0842 /* SOIL.h */,
+				84B79694210DF69A007C0842 /* game.h */,
 				18F0D013209C53960048A3DD /* stb_image.h */,
+				84B7969C210DF7BE007C0842 /* texture.h */,
+				84B79698210DF767007C0842 /* resource_manager.h */,
+				84B796AC210DFDB4007C0842 /* sprite_renderer.cpp */,
+				84B796AD210DFDB4007C0842 /* sprite_renderer.h */,
 			);
 			path = Headers;
 			sourceTree = "<group>";
@@ -723,12 +800,30 @@
 			path = KHR;
 			sourceTree = "<group>";
 		};
-		18F0D011209C50A40048A3DD /* Shaders */ = {
+		18F0D011209C50A40048A3DD /* shaders */ = {
 			isa = PBXGroup;
 			children = (
 				18F0D012209C52120048A3DD /* shader.vs */,
+				84B796AA210DFB30007C0842 /* sprite.vs */,
+				84B796AB210DFCD6007C0842 /* sprite.fs */,
 			);
-			path = Shaders;
+			path = shaders;
+			sourceTree = "<group>";
+		};
+		84B7968D210DC275007C0842 /* Texture */ = {
+			isa = PBXGroup;
+			children = (
+				84B7968E210DC275007C0842 /* main.cpp */,
+			);
+			path = Texture;
+			sourceTree = "<group>";
+		};
+		84B796B0210E24B4007C0842 /* texture */ = {
+			isa = PBXGroup;
+			children = (
+				84B796B2210E26AD007C0842 /* awesomeface.png */,
+			);
+			path = texture;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -741,6 +836,7 @@
 				18A1F642209AE42300115EDE /* Sources */,
 				18A1F643209AE42300115EDE /* Frameworks */,
 				18A1F644209AE42300115EDE /* CopyFiles */,
+				84B796B4210E28B4007C0842 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -751,16 +847,40 @@
 			productReference = 18A1F646209AE42300115EDE /* ShaderTest */;
 			productType = "com.apple.product-type.tool";
 		};
+		84B7968B210DC275007C0842 /* Texture */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 84B79692210DC275007C0842 /* Build configuration list for PBXNativeTarget "Texture" */;
+			buildPhases = (
+				84B79688210DC275007C0842 /* Sources */,
+				84B79689210DC275007C0842 /* Frameworks */,
+				84B7968A210DC275007C0842 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Texture;
+			productName = Texture;
+			productReference = 84B7968C210DC275007C0842 /* Texture */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		18A1F63E209AE42300115EDE /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				KnownAssetTags = (
+					New,
+				);
 				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = tubu;
 				TargetAttributes = {
 					18A1F645209AE42300115EDE = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					84B7968B210DC275007C0842 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
 					};
@@ -779,17 +899,48 @@
 			projectRoot = "";
 			targets = (
 				18A1F645209AE42300115EDE /* ShaderTest */,
+				84B7968B210DC275007C0842 /* Texture */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		84B796B4210E28B4007C0842 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84B796B5210E28BA007C0842 /* awesomeface.png in Resources */,
+				84B796B6210E2A9B007C0842 /* sprite.vs in Resources */,
+				84B796B7210E2A9D007C0842 /* sprite.fs in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		18A1F642209AE42300115EDE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84B79695210DF69A007C0842 /* game.cpp in Sources */,
 				18A1F64A209AE42300115EDE /* main.cpp in Sources */,
+				84B7969A210DF789007C0842 /* resource_manager.cpp in Sources */,
+				84B7969D210DF7BE007C0842 /* texture.cpp in Sources */,
+				84B796A0210DF8AE007C0842 /* SOIL.c in Sources */,
+				84B796A8210DF8FB007C0842 /* image_DXT.c in Sources */,
+				84B79697210DF749007C0842 /* shader.cpp in Sources */,
+				84B796AE210DFDB4007C0842 /* sprite_renderer.cpp in Sources */,
+				84B796A9210DF8FB007C0842 /* image_helper.c in Sources */,
 				18DB5940209B100700C3BB7F /* glad.c in Sources */,
+				84B796A7210DF8FB007C0842 /* stb_image_aug.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		84B79688210DC275007C0842 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84B7968F210DC275007C0842 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -925,6 +1076,22 @@
 			};
 			name = Release;
 		};
+		84B79690210DC275007C0842 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		84B79691210DC275007C0842 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -942,6 +1109,15 @@
 			buildConfigurations = (
 				18A1F64E209AE42300115EDE /* Debug */,
 				18A1F64F209AE42300115EDE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		84B79692210DC275007C0842 /* Build configuration list for PBXNativeTarget "Texture" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				84B79690210DC275007C0842 /* Debug */,
+				84B79691210DC275007C0842 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

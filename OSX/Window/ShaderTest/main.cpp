@@ -1,157 +1,103 @@
-#include <glad/glad.h>
+/*******************************************************************
+ ** This code is part of Breakout.
+ **
+ ** Breakout is free software: you can redistribute it and/or modify
+ ** it under the terms of the CC BY 4.0 license as published by
+ ** Creative Commons, either version 4 of the License, or (at your
+ ** option) any later version.
+ ******************************************************************/
+#define GLEW_STATIC
+#include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
-#include <iostream>
+#include "game.h"
+#include "resource_manager.h"
 
-using namespace std;
 
-void framebuffer_size_callback(GLFWwindow* window, int width, int height);
-void processInput(GLFWwindow* window);
+// GLFW function declerations
+void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode);
 
-int main(int argc, char* argv[])
+// The Width of the screen
+const GLuint SCREEN_WIDTH = 800;
+// The height of the screen
+const GLuint SCREEN_HEIGHT = 600;
+
+Game Breakout(SCREEN_WIDTH, SCREEN_HEIGHT);
+
+int main(int argc, char *argv[])
 {
     glfwInit();
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+    glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
     
-    GLFWwindow* window = glfwCreateWindow(800, 600, "Learn OpenGL", NULL, NULL);
-    if (window == NULL)
-    {
-        std::cout << "failed to create window" << std::endl;
-        glfwTerminate();
-        return -1;
-    }
-    
+    GLFWwindow* window = glfwCreateWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Breakout", nullptr, nullptr);
     glfwMakeContextCurrent(window);
     
-    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
-    {
-        cout << "failed to initialize GLAD" << endl;
-        return -1;
-    }
+    glewExperimental = GL_TRUE;
+    glewInit();
+    glGetError(); // Call it once to catch glewInit() bug, all other errors are now from our application.
     
-    glViewport(0, 0, 800, 600);
-    glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
+    glfwSetKeyCallback(window, key_callback);
     
-    /* vertex shader */
-    string vertexString = "#version 330 core \n layout (location = 0) in vec3 aPos; \n void main() \n { \n gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0); \n }";
-    const char* vertexShaderSource = vertexString.data();
+    // OpenGL configuration
+    glViewport(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+    glEnable(GL_CULL_FACE);
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     
-    unsigned int vertexShader;
-    vertexShader = glCreateShader(GL_VERTEX_SHADER);
-    glShaderSource(vertexShader, 1, &vertexShaderSource, NULL);
-    glCompileShader(vertexShader);
+    // Initialize game
+    Breakout.Init();
     
-    int success;
-    char infoLog[512];
-    glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &success);
-    if (!success)
-    {
-        glGetShaderInfoLog(vertexShader, 512, NULL, infoLog);
-        cout << "ERROR::SHADER::VERTEX::COMPILEATION_FAILED\n" << infoLog << endl;
-    }
+    // DeltaTime variables
+    GLfloat deltaTime = 0.0f;
+    GLfloat lastFrame = 0.0f;
     
-    /* fragment shader */
-    string fragmentString = "#version 330 core \n out vec4 FragColor; \n void main()\n {\n FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0);\n }\n";
-    const char* fragmentShaderSource = fragmentString.data();
-    
-    unsigned int fragmentShader;
-    fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-    glShaderSource(fragmentShader, 1, &fragmentShaderSource, NULL);
-    glCompileShader(fragmentShader);
-    
-    glGetShaderiv(fragmentShader, GL_COMPILE_STATUS, &success);
-    if (!success)
-    {
-        glGetShaderInfoLog(fragmentShader, 512, NULL, infoLog);
-        cout << "ERROR::SHADER::FRAGMENT::COMPILEATION_FAILED\n" << infoLog << endl;
-    }
-    
-    /* shader program */
-    unsigned int shaderProgram;
-    shaderProgram = glCreateProgram();
-    glAttachShader(shaderProgram, vertexShader);
-    glAttachShader(shaderProgram, fragmentShader);
-    glLinkProgram(shaderProgram);
-    glGetProgramiv(shaderProgram, GL_LINK_STATUS, &success);
-    if (!success)
-    {
-        glGetProgramInfoLog(shaderProgram, 512, NULL, infoLog);
-        cout << "ERROR::SHADERPROGRAM::COMPILATION_FAILED\n" << infoLog << endl;
-    }
-    
-    glDeleteShader(vertexShader);
-    glDeleteShader(fragmentShader);
-    
-    float vertices[] = {
-        0.5f,0.5f,0.0f,
-        0.5f,-0.5f,0.0f,
-        -0.5f,-0.5f,0.0f,
-        -0.5f,0.5f,0.0f
-    };
-    
-    unsigned int indices[] = {
-        0,1,3,
-        1,2,3
-    };
-    
-    /* VAO */
-    unsigned int VAO;
-    glGenVertexArrays(1, &VAO);
-    
-    /* VBO */
-    unsigned int VBO;
-    glGenBuffers(1, &VBO);
-    
-    unsigned int EBO;
-    glGenBuffers(1, &EBO);
-    
-    glBindVertexArray(VAO);
-    glBindBuffer(GL_ARRAY_BUFFER, VBO);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-    
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
-    
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
-    glEnableVertexAttribArray(0);
-    
-    glBindBuffer(GL_ARRAY_BUFFER, 0); //½â°óVBO
-    glBindVertexArray(0);              //½â°óVAO
+    // Start Game within Menu State
+    Breakout.State = GAME_ACTIVE;
     
     while (!glfwWindowShouldClose(window))
     {
-        processInput(window);
-        
-        glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-        glClear(GL_COLOR_BUFFER_BIT);
-        
-        glUseProgram(shaderProgram);
-        glBindVertexArray(VAO);
-        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
-        glBindVertexArray(0);
-        
+        // Calculate delta time
+        GLfloat currentFrame = glfwGetTime();
+        deltaTime = currentFrame - lastFrame;
+        lastFrame = currentFrame;
         glfwPollEvents();
+        
+        //deltaTime = 0.001f;
+        // Manage user input
+        Breakout.ProcessInput(deltaTime);
+        
+        // Update Game state
+        Breakout.Update(deltaTime);
+        
+        // Render
+        glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+        glClear(GL_COLOR_BUFFER_BIT);
+        Breakout.Render();
+        
         glfwSwapBuffers(window);
     }
     
-    glDeleteVertexArrays(1, &VAO);
-    glDeleteBuffers(1, &VBO);
+    // Delete all resources as loaded using the resource manager
+    ResourceManager::Clear();
     
     glfwTerminate();
-    
     return 0;
 }
 
-void framebuffer_size_callback(GLFWwindow* window, int width, int height)
+void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode)
 {
-    glViewport(0, 0, width, height);
-}
-
-void processInput(GLFWwindow* window)
-{
-    if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
-        glfwSetWindowShouldClose(window, true);
+    // When a user presses the escape key, we set the WindowShouldClose property to true, closing the application
+    if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
+        glfwSetWindowShouldClose(window, GL_TRUE);
+    if (key >= 0 && key < 1024)
+    {
+        if (action == GLFW_PRESS)
+            Breakout.Keys[key] = GL_TRUE;
+        else if (action == GLFW_RELEASE)
+            Breakout.Keys[key] = GL_FALSE;
+    }
 }
