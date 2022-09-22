@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32616.157
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Lighting", "Lighting\Lighting.vcxproj", "{91ADF40E-F751-405D-BC99-AA85484286FC}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OpenGL", "Lighting\Lighting.vcxproj", "{91ADF40E-F751-405D-BC99-AA85484286FC}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MEngine", "..\MEngine\MEngine\MEngine.vcxproj", "{2F56A564-D3A5-4922-A00F-5F8863059339}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,14 @@ Global
 		{91ADF40E-F751-405D-BC99-AA85484286FC}.Release|x64.Build.0 = Release|x64
 		{91ADF40E-F751-405D-BC99-AA85484286FC}.Release|x86.ActiveCfg = Release|Win32
 		{91ADF40E-F751-405D-BC99-AA85484286FC}.Release|x86.Build.0 = Release|Win32
+		{2F56A564-D3A5-4922-A00F-5F8863059339}.Debug|x64.ActiveCfg = Debug|x64
+		{2F56A564-D3A5-4922-A00F-5F8863059339}.Debug|x64.Build.0 = Debug|x64
+		{2F56A564-D3A5-4922-A00F-5F8863059339}.Debug|x86.ActiveCfg = Debug|Win32
+		{2F56A564-D3A5-4922-A00F-5F8863059339}.Debug|x86.Build.0 = Debug|Win32
+		{2F56A564-D3A5-4922-A00F-5F8863059339}.Release|x64.ActiveCfg = Release|x64
+		{2F56A564-D3A5-4922-A00F-5F8863059339}.Release|x64.Build.0 = Release|x64
+		{2F56A564-D3A5-4922-A00F-5F8863059339}.Release|x86.ActiveCfg = Release|Win32
+		{2F56A564-D3A5-4922-A00F-5F8863059339}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
