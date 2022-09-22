@@ -90,11 +90,6 @@ public:
 		glUseProgram(ID);
 	}
 
-	static Shader Create(const char* vs, const char* fs, const char* gs = nullptr) {
-		Shader shader(vs, fs, gs);
-		return shader;
-	}
-
 public:
 	GLuint ID;
 

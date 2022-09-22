@@ -32,9 +32,6 @@ void Application::Update() {
 
         // build and compile shaders
         // -------------------------
-        /*Shader s = Shader::Create("../resources/shader/antialiasing.vert"
-            , "../resources/shader/antialiasing.frag");
-        shader = &s;*/
 
         // set up vertex data (and buffer(s)) and configure vertex attributes
         // ------------------------------------------------------------------
