@@ -1,6 +1,7 @@
+#pragma once
 
-#include "TreeNode.h"
+#include "Tree.h"
 
-class BaseNode : public TreeNode {
+class BaseNode : public Node {
     
 };
