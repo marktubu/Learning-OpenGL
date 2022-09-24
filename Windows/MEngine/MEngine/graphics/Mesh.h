@@ -7,6 +7,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 
 #include "Shader.h"
+#include "Texture.h"
 
 using namespace std;
 
@@ -21,13 +22,6 @@ struct Vertex
 	glm::vec3 Bitangent;
 	int m_BoneIDs[MAX_BONE_INFLUENCE];
 	float m_Weights[MAX_BONE_INFLUENCE];
-};
-
-struct Texture
-{
-	unsigned int id;
-	string type;
-	aiString path;
 };
 
 class Mesh {

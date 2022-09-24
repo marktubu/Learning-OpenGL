@@ -37,7 +37,7 @@ public:
 		float fb_move = 0.0f;
 		float lr_move = 0.0f;
 		float move = delta * MoveSpeed;
-		if(InputManager::GetKey(GLFW_KEY_W))
+		if (InputManager::GetKey(GLFW_KEY_W))
 			fb_move += move;
 		if (InputManager::GetKey(GLFW_KEY_S))
 			fb_move -= move;

@@ -54,6 +54,9 @@
     <ClInclude Include="graphics\Model.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="graphics\Texture.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="core\GameObject.cpp">
