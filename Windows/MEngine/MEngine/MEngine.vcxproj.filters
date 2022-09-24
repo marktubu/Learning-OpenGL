@@ -45,6 +45,15 @@
     <ClInclude Include="graphics\Camera.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="manager\TimeManager.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="graphics\Mesh.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="graphics\Model.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="core\GameObject.cpp">
@@ -69,6 +78,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="graphics\Camera.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="manager\TimeManager.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

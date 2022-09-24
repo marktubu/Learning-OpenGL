@@ -1,11 +1,14 @@
 
 
 #include "Application.h"
+#include "../manager/TimeManager.h"
+#include "../graphics/Camera.h"
 
 GLFWwindow* Application::window;
 FilePath Application::dataPath;
 
 Shader* shader;
+Camera* camera;
 
 void Application::Init(const FilePath& path) {
     dataPath = path;
@@ -13,16 +16,21 @@ void Application::Init(const FilePath& path) {
 
     InputManager::Init(window);
 
-    shader = new Shader("../resources/shader/antialiasing.vert"
-        , "../resources/shader/antialiasing.frag");
+    shader = new Shader("../resources/shader/geo.vs"
+        , "../resources/shader/geo.fs"
+        , "../resources/shader/geo.gs");
 
+    camera = new Camera(glm::vec3(0, 0, 5), glm::vec3(0, 0, -1));
 }
 bool init = false;
 
 unsigned int cubeVAO, cubeVBO = 0;
 
 void Application::Update() {
+    TimeManager::Update();
     InputManager::Update();
+
+    camera->Update();
     
     if (!init) {
         init = true;
@@ -37,12 +45,47 @@ void Application::Update() {
         // ------------------------------------------------------------------
         float cubeVertices[] = {
             // positions       
-            -0.5f, -0.5f, 0.0f,
-             0.5f, -0.5f, 0.0f,
-             0.5f,  0.5f, 0.0f,
-             0.5f,  0.5f, -0.5f,
-            -0.5f,  0.5f, -0.5f,
             -0.5f, -0.5f, -0.5f,
+         0.5f, -0.5f, -0.5f,
+         0.5f,  0.5f, -0.5f,
+         0.5f,  0.5f, -0.5f,
+        -0.5f,  0.5f, -0.5f,
+        -0.5f, -0.5f, -0.5f,
+
+        -0.5f, -0.5f,  0.5f,
+         0.5f, -0.5f,  0.5f,
+         0.5f,  0.5f,  0.5f,
+         0.5f,  0.5f,  0.5f,
+        -0.5f,  0.5f,  0.5f,
+        -0.5f, -0.5f,  0.5f,
+
+        -0.5f,  0.5f,  0.5f,
+        -0.5f,  0.5f, -0.5f,
+        -0.5f, -0.5f, -0.5f,
+        -0.5f, -0.5f, -0.5f,
+        -0.5f, -0.5f,  0.5f,
+        -0.5f,  0.5f,  0.5f,
+
+         0.5f,  0.5f,  0.5f,
+         0.5f,  0.5f, -0.5f,
+         0.5f, -0.5f, -0.5f,
+         0.5f, -0.5f, -0.5f,
+         0.5f, -0.5f,  0.5f,
+         0.5f,  0.5f,  0.5f,
+
+        -0.5f, -0.5f, -0.5f,
+         0.5f, -0.5f, -0.5f,
+         0.5f, -0.5f,  0.5f,
+         0.5f, -0.5f,  0.5f,
+        -0.5f, -0.5f,  0.5f,
+        -0.5f, -0.5f, -0.5f,
+
+        -0.5f,  0.5f, -0.5f,
+         0.5f,  0.5f, -0.5f,
+         0.5f,  0.5f,  0.5f,
+         0.5f,  0.5f,  0.5f,
+        -0.5f,  0.5f,  0.5f,
+        -0.5f,  0.5f, -0.5f
 
         };
         // setup cube VAO
@@ -60,13 +103,15 @@ void Application::Update() {
 
     // set transformation matrices		
     shader->Use();
-    /*glm::mat4 projection(1.0);
-    shader.setMat4("projection", projection);
-    shader.setMat4("view", camera.GetViewMatrix());
-    shader.setMat4("model", glm::mat4(1.0f));*/
+    glm::mat4 projection = glm::perspective(glm::radians(45.f), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 1000.0f);
+    shader->setMat4("projection", projection);
+    shader->setMat4("view", camera->GetViewMatrix());
+    glm::mat4 model = glm::mat4(1.0f);
+    model = glm::rotate(model, 30.f, glm::vec3(glm::radians(30.f), glm::radians(30.f), 0));
+    shader->setMat4("model", model);
 
     glBindVertexArray(cubeVAO);
-    glDrawArrays(GL_TRIANGLES, 0, 6);
+    glDrawArrays(GL_TRIANGLES, 0, 36);
 
     // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
     // -------------------------------------------------------------------------------

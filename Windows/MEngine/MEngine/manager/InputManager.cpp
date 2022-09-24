@@ -8,12 +8,11 @@ float lastX = SCR_WIDTH / 2.0f;
 float lastY = SCR_HEIGHT / 2.0f;
 bool firstMouse = true;
 
-// timing
-float deltaTime = 0.0f;
-float lastFrame = 0.0f;
-
 GLFWwindow* InputManager::window;
-
+float InputManager::MouseMoveXOffset;
+float InputManager::MouseMoveYOffset;
+float InputManager::MouseScrollXOffset;
+float InputManager::MouseScrollYOffset;
 
 void InputManager::Init(GLFWwindow* _window) {
     window = _window;
@@ -25,6 +24,11 @@ void InputManager::Init(GLFWwindow* _window) {
 void InputManager::Update() {
     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
         glfwSetWindowShouldClose(window, true);
+}
+
+bool InputManager::GetKey(int key)
+{
+    return glfwGetKey(window, key) == GLFW_PRESS;
 }
 
 void InputManager::framebuffer_size_callback(GLFWwindow* window, int width, int height)
@@ -54,12 +58,14 @@ void InputManager::mouse_callback(GLFWwindow* window, double xposIn, double ypos
     lastX = xpos;
     lastY = ypos;
 
-
+    MouseMoveXOffset = xoffset;
+    MouseMoveYOffset = yoffset;
 }
 
 // glfw: whenever the mouse scroll wheel scrolls, this callback is called
 // ----------------------------------------------------------------------
 void InputManager::scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
 {
-
+    MouseScrollXOffset = xoffset;
+    MouseScrollYOffset = yoffset;
 }
