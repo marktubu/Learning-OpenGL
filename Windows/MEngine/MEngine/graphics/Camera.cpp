@@ -1,4 +1,6 @@
 
+#include <algorithm>
+
 #include "Camera.h"
 
 #include "../manager/InputManager.h"
@@ -11,6 +13,12 @@ std::vector<Camera*> Camera::Cameras;
 
 void Camera::SetCurrent(Camera* camera) {
 	Camera::Current = camera;
+}
+
+void Camera::Sort() {
+	std::sort(Cameras.begin(), Cameras.end(), [](Camera* a, Camera* b) {
+		return a->Depth < b->Depth;
+	});
 }
 
 void Camera::Foreach(std::function<void(Camera*)> func)

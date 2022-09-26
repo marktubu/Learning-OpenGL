@@ -24,10 +24,10 @@ void Application::Init() {
 
     model0 = new Model(MFile::GetRes("objects/backpack/backpack.obj"));
     new Camera(glm::vec3(0, 0, 8));
-    auto cam2 = new Camera(glm::vec3(8, 0, 4), -180);
+    auto cam2 = new Camera(glm::vec3(8, 0, 3), -180);
     cam2->ClearFlags = 0;
 
-    glEnable(GL_DEPTH_TEST);
+    glDisable(GL_DEPTH_TEST);
 }
 
 void Application::Run()
@@ -40,6 +40,7 @@ void Application::Update() {
     TimeManager::Update();
     InputManager::Update();
 
+    Camera::Sort();
     Camera::Foreach([](Camera* cam) {
         cam->Update();
 
