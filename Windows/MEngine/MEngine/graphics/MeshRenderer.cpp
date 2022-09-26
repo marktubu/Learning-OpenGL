@@ -15,6 +15,8 @@ void MeshRenderer::Render()
 	auto mesh = filter->mesh;
 
 	auto camera = Camera::Current;
+	if ((camera->CullingMask & gameObject->layer) == 0x0) return;
+
 	auto shader = material->shader;
 	glm::mat4 model = glm::mat4(1.0);
 	glm::mat4 view = camera->GetViewMatrix();

@@ -26,6 +26,7 @@ void Application::Init() {
     new Camera(glm::vec3(0, 0, 8));
     auto cam2 = new Camera(glm::vec3(8, 0, 3), -180);
     cam2->ClearFlags = 0;
+    cam2->CullingMask = 0;
 
     glDisable(GL_DEPTH_TEST);
 }

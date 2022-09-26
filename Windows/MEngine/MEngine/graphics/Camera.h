@@ -25,7 +25,7 @@ public:
 		FOV(45), Near(0.1f), Far(100.f), 
 		ClearFlags(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT),
 		ClearColor(glm::u8vec4(0)), 
-		WorldUp(glm::vec3(0, 1, 0))
+		WorldUp(glm::vec3(0, 1, 0)), CullingMask(0xff)
 	{
 		updateCamera();
 		int dp = depth;
@@ -75,6 +75,7 @@ public:
 	int Depth;
 	int ClearFlags;
 	glm::u8vec4 ClearColor;
+	unsigned int CullingMask;
 
 private:
 	void updateCamera();

@@ -5,7 +5,7 @@ using namespace rttr;
 
 Tree GameObject::game_object_tree;
 
-GameObject::GameObject(std::string _name): Node(), layer(0x01)
+GameObject::GameObject(std::string _name): Node(), active(true), layer(0x01)
 {
 	name = _name;
 	game_object_tree.Root()->AddChild(this);
