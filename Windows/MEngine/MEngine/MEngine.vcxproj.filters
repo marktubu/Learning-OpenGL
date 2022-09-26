@@ -75,6 +75,12 @@
     <ClInclude Include="util\MFile.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="graphics\Scene.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="manager\SceneManager.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="core\GameObject.cpp">
@@ -123,6 +129,12 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="graphics\Shader.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\Scene.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="manager\SceneManager.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

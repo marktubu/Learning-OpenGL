@@ -8,6 +8,8 @@
 #include "Tree.h"
 #include "GameObject.h"
 #include "../graphics/MeshRenderer.h"
+#include "../graphics/Scene.h"
+#include "../manager/SceneManager.h"
 
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -24,9 +26,11 @@ void Application::Init() {
 
     model0 = new Model(MFile::GetRes("objects/backpack/backpack.obj"));
     new Camera(glm::vec3(0, 0, 8));
-    auto cam2 = new Camera(glm::vec3(8, 0, 3), -180);
-    cam2->ClearFlags = 0;
-    cam2->CullingMask = 0;
+    //auto cam2 = new Camera(glm::vec3(8, 0, 3), -180);
+    //cam2->ClearFlags = 0;
+    //cam2->CullingMask = 0;
+    auto s1 = SceneManager::LoadScene("s1");
+    s1->root->AddChild(model0->root);
 
     glDisable(GL_DEPTH_TEST);
 }
@@ -45,7 +49,7 @@ void Application::Update() {
     Camera::Foreach([](Camera* cam) {
         cam->Update();
 
-        auto root = model0->root;
+        auto root = Scene::gScene->root;
         Tree::Post(root, [](Node* node) {
             GameObject* game_object = dynamic_cast<GameObject*>(node);
             auto renderer = game_object->GetComponent<MeshRenderer>();
