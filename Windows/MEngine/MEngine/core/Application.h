@@ -12,7 +12,9 @@ typedef std::string FilePath;
 class Application {
 public:
 	static void Init();
+    static void Run();
     static void Update();
+    static void EndFrame();
     static void Exit();
     static bool ShouldClose();
 
@@ -42,7 +44,7 @@ private:
             return -1;
         }
         glfwMakeContextCurrent(window);
-
+        glfwSetWindowPos(window, 700, 600);
         // tell GLFW to capture our mouse
         glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 

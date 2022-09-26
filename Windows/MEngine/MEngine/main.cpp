@@ -9,7 +9,7 @@ int main() {
 	Application::Init();
 
 	while (!Application::ShouldClose()) {
-		Application::Update();
+		Application::Run();
 	}
 
 	Application::Exit();

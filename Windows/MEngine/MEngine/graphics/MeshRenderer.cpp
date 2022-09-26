@@ -25,7 +25,6 @@ void MeshRenderer::Render()
 	shader->setMat4("projection", projection);
 
 	glBindVertexArray(mesh->VAO);
-	shader->Use();
 
 	auto textures = material->textures;
 	for (auto i = 0;i < textures.size();i++) {
@@ -52,6 +51,8 @@ void MeshRenderer::Render()
 		}
 		shader->setInt("material." + name, i);
 	}
+	glActiveTexture(GL_TEXTURE0);
 
-	glDrawElements(GL_TRIANGLES, mesh->indices.size(), GL_UNSIGNED_BYTE, 0);
+	glDrawElements(GL_TRIANGLES, mesh->indices.size(), GL_UNSIGNED_INT, 0);
+	glBindVertexArray(0);
 }

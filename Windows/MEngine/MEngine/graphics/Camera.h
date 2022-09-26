@@ -1,12 +1,12 @@
 #pragma once
 
+#include <vector>
+#include <functional>
+
 #include <GLFW/glfw3.h>
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
-#include "../manager/InputManager.h"
-#include "../manager/TimeManager.h"
-#include "../util/Screen.h"
 
 enum MoveDir {
 	Front,
@@ -20,63 +20,38 @@ const float Sensitivity = 0.01f;
 
 class Camera {
 public:
-	Camera(glm::vec3 pos, glm::vec3 front) : Position(pos), Front(front), WorldUp(glm::vec3(0, 1, 0)), FOV(45), Near(0.1f), Far(100.f), Yaw(-90.0), Pitch(0.0) {
+	Camera(glm::vec3 pos, float yaw = -90.f) : Position(pos), 
+		Yaw(yaw), Pitch(0.0), WorldUp(glm::vec3(0, 1, 0)),
+		FOV(45), Near(0.1f), Far(100.f), 
+		ClearFlags(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT),
+		ClearColor(glm::u8vec4(0))
+	{
 		updateCamera();
-		Camera::Current = this;
+		Cameras.push_back(this);
 	}
 
-	glm::mat4 GetViewMatrix() {
-		return glm::lookAt(Position, Position + Front, Up);
-	}
+	static void SetCurrent(Camera* camera);
 
-	glm::mat4 GetProjectionMatrix() {
-		return glm::perspective(glm::radians(FOV), (float)Screen::Width / Screen::Height, Near, Far);
-	}
+	static void Foreach(std::function<void(Camera*)> func);
+
+	void Clear();
+
+	glm::mat4 GetViewMatrix();
+
+	glm::mat4 GetProjectionMatrix();
 
 	void Update() {
 		ProcessMove();
 		ProcessMouse();
 	}
 
-	void ProcessMove() {
-		float delta = TimeManager::Delta;
-		float fb_move = 0.0f;
-		float lr_move = 0.0f;
-		float move = delta * MoveSpeed;
-		if (InputManager::GetKey(GLFW_KEY_W))
-			fb_move += move;
-		if (InputManager::GetKey(GLFW_KEY_S))
-			fb_move -= move;
-		if (InputManager::GetKey(GLFW_KEY_D))
-			lr_move += move;
-		if (InputManager::GetKey(GLFW_KEY_A))
-			lr_move -= move;
+	void ProcessMove();
 
-		Position += Front * fb_move + Right * lr_move;
-	}
-
-	void ProcessMouse() {
-		glm::vec3 dir;
-		float lr = InputManager::MouseMoveXOffset * Sensitivity;
-		float fb = InputManager::MouseMoveYOffset * Sensitivity;
-		InputManager::MouseMoveXOffset = 0;
-		InputManager::MouseMoveYOffset = 0;
-
-		Pitch += fb;
-		Yaw += lr;
-		if (Pitch < -89) Pitch = -89;
-		if (Pitch > 89) Pitch = 89;
-
-		dir.x = glm::cos(glm::radians(Pitch)) * glm::cos(glm::radians(Yaw));
-		dir.y = glm::sin(glm::radians(Pitch));
-		dir.z = glm::cos(glm::radians(Pitch)) * glm::sin(glm::radians(Yaw));
-
-		Front = glm::normalize(dir);
-		updateCamera();
-	}
+	void ProcessMouse();
 
 public:
 	static Camera* Current;
+	static std::vector<Camera*> Cameras;
 
 	glm::vec3 Position;
 
@@ -89,11 +64,11 @@ public:
 	float Near;
 	float Far;
 
+	int ClearFlags;
+	glm::u8vec4 ClearColor;
+
 private:
-	void updateCamera() {
-		Right = glm::normalize(glm::cross(Front, WorldUp));
-		Up = glm::normalize(glm::cross(Right, Front));
-	}
+	void updateCamera();
 
 private:
 	float Yaw;

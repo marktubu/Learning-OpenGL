@@ -1,4 +1,4 @@
 #include "Screen.h"
 
-int Screen::Width = 800;
-int Screen::Height = 600;
+int Screen::Width = 400;
+int Screen::Height = 300;

@@ -26,6 +26,14 @@ void InputManager::Update() {
         glfwSetWindowShouldClose(window, true);
 }
 
+void InputManager::EndFrame()
+{
+    MouseMoveXOffset = 0;
+    MouseMoveYOffset = 0;
+    MouseScrollXOffset = 0;
+    MouseScrollYOffset = 0;
+}
+
 bool InputManager::GetKey(int key)
 {
     return glfwGetKey(window, key) == GLFW_PRESS;

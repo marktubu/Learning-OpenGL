@@ -2,6 +2,7 @@
 
 #include "Application.h"
 #include "../manager/TimeManager.h"
+#include "../manager/InputManager.h"
 #include "../graphics/Camera.h"
 #include "../graphics/Model.h"
 #include "Tree.h"
@@ -14,7 +15,6 @@
 
 GLFWwindow* Application::window;
 
-Camera* camera;
 Model* model0;
 
 void Application::Init() {
@@ -22,40 +22,47 @@ void Application::Init() {
 
     InputManager::Init(window);
 
-    model0 = new Model("../resources/objects/backpack/backpack.obj");
-    camera = new Camera(glm::vec3(0, 0, 5), glm::vec3(0, 0, -1));
+    model0 = new Model(MFile::GetRes("objects/backpack/backpack.obj"));
+    new Camera(glm::vec3(0, 0, 8));
+    auto cam2 = new Camera(glm::vec3(8, 0, 4), -180);
+    cam2->ClearFlags = 0;
 
     glEnable(GL_DEPTH_TEST);
 }
-bool init = false;
 
-unsigned int cubeVAO, cubeVBO = 0;
+void Application::Run()
+{
+    Update();
+    EndFrame();
+}
 
 void Application::Update() {
     TimeManager::Update();
     InputManager::Update();
 
-    camera->Update();
-    
-    glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    Camera::Foreach([](Camera* cam) {
+        cam->Update();
 
-    // float time = glfwGetTime();
-    // shader.setFloat("time", time);
-
-    auto root = model0->root;
-    Tree::Post(root, [](Node* node) {
-        GameObject* game_object = dynamic_cast<GameObject *>(node);
-        auto renderer = game_object->GetComponent<MeshRenderer>();
-        if (renderer != nullptr) {
-            renderer->Render();
-        }
+        auto root = model0->root;
+        Tree::Post(root, [](Node* node) {
+            GameObject* game_object = dynamic_cast<GameObject*>(node);
+            auto renderer = game_object->GetComponent<MeshRenderer>();
+            if (renderer != nullptr) {
+                renderer->Render();
+            }
         });
+    });
 
+    InputManager::EndFrame();
     // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
     // -------------------------------------------------------------------------------
     glfwSwapBuffers(window);
     glfwPollEvents();
+}
+
+void Application::EndFrame()
+{
+    
 }
 
 void Application::Exit() {

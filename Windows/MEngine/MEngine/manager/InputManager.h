@@ -6,6 +6,7 @@ class InputManager {
 public:
 	static void Init(GLFWwindow* _window);
 	static void Update();
+	static void EndFrame();
 	static bool GetKey(int key);
 
 public:
