@@ -1,9 +1,12 @@
 
 #include "core/Application.h"
+#include "util/MFile.h"
 
 int main() {
 	std::string path = "C:\\File\\Project\\Unity\\Learning-OpenGL\\Windows\\MEngine\\";
-	Application::Init(path);
+	MFile::Init(path);
+
+	Application::Init();
 
 	while (!Application::ShouldClose()) {
 		Application::Update();

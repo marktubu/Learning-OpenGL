@@ -57,6 +57,24 @@
     <ClInclude Include="graphics\Texture.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="graphics\Material.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="graphics\Renderer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="graphics\MeshRenderer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="graphics\MeshFilter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="util\Screen.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="util\MFile.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="core\GameObject.cpp">
@@ -84,6 +102,27 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="manager\TimeManager.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\MeshRenderer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\Model.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\Material.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\Texture.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="util\Screen.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="util\MFile.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\Shader.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

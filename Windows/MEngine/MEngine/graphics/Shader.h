@@ -4,15 +4,20 @@
 #include <fstream>
 #include <sstream>
 #include <string>
+#include <unordered_map>
 
 #include <glad/glad.h>
 #include <glm/glm.hpp>
 
-using namespace std;
+#include "../util/MFile.h"
 
 class Shader {
 public:
-	Shader(const char* vs, const char* fs, const char* gs = nullptr) {
+	Shader(std::string name) : Shader(MFile::GetRes("shader/"+std::string(name)+".vs"), MFile::GetRes("shader/" + std::string(name) + ".fs")) {
+
+	}
+
+	Shader(std::string vs, std::string fs, std::string gs = std::string()) {
 		std::ifstream vs_file;
 		std::ifstream fs_file;
 		std::ifstream gs_file;
@@ -36,7 +41,7 @@ public:
 			vs_code = vs_stream.str();
 			fs_code = fs_stream.str();
 
-			if (gs != nullptr) {
+			if (!gs.empty()) {
 				gs_file.open(gs);
 				std::stringstream gs_stream;
 				gs_stream << gs_file.rdbuf();
@@ -60,7 +65,7 @@ public:
 		glCompileShader(fs_id);
 		checkCompileErrors(fs_id, "fragment");
 
-		GLuint gs_id;
+		GLuint gs_id = 0;
 		if (!gs_code.empty()) {
 			const char* gs_code_str = gs_code.c_str();
 			gs_id = glCreateShader(GL_GEOMETRY_SHADER);
@@ -73,7 +78,7 @@ public:
 		ID = prog;
 		glAttachShader(prog, vs_id);
 		glAttachShader(prog, fs_id);
-		if (gs != nullptr) {
+		if (!gs.empty()) {
 			glAttachShader(prog, gs_id);
 		}
 		glLinkProgram(prog);
@@ -81,9 +86,19 @@ public:
 
 		glDeleteShader(vs_id);
 		glDeleteShader(fs_id);
-		if (gs != nullptr) {
+		if (!gs.empty()) {
 			glDeleteShader(gs_id);
 		}
+	}
+
+	static Shader* Find(std::string name) {
+		auto iter = shaderMap.find(name);
+		if (iter != shaderMap.end()) {
+			return iter->second;
+		}
+		auto shader = new Shader(name);
+		shaderMap.emplace(name, shader);
+		return shader;
 	}
 
 	void Use() {
@@ -180,4 +195,7 @@ private:
 			}
 		}
 	}
+
+private:
+	static std::unordered_map<std::string, Shader*> shaderMap;
 };

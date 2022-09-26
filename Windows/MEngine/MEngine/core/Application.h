@@ -3,35 +3,21 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-#include <glm/gtc/type_ptr.hpp>
-
 #include <iostream>
 #include <string>
-
-#include "../graphics/Shader.h"
-#include "../manager/InputManager.h"
-
-using namespace std;
+#include "../util/Screen.h"
 
 typedef std::string FilePath;
 
-// settings
-const unsigned int SCR_WIDTH = 800;
-const unsigned int SCR_HEIGHT = 600;
-
 class Application {
 public:
-	static void Init(const FilePath& path);
+	static void Init();
     static void Update();
     static void Exit();
     static bool ShouldClose();
 
-	static FilePath GetPath(const FilePath& path);
-	static FilePath GetRes(const FilePath& path);
 public:
-	static FilePath dataPath;
+	
 
 private:
     static int InitWindow() {
@@ -48,7 +34,7 @@ private:
 
         // glfw window creation
         // --------------------
-        window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "LearnOpenGL", NULL, NULL);
+        window = glfwCreateWindow(Screen::Width, Screen::Height, "LearnOpenGL", NULL, NULL);
         if (window == NULL)
         {
             std::cout << "Failed to create GLFW window" << std::endl;

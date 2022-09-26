@@ -6,6 +6,7 @@
 
 #include "../manager/InputManager.h"
 #include "../manager/TimeManager.h"
+#include "../util/Screen.h"
 
 enum MoveDir {
 	Front,
@@ -19,12 +20,17 @@ const float Sensitivity = 0.01f;
 
 class Camera {
 public:
-	Camera(glm::vec3 pos, glm::vec3 front) : Position(pos), Front(front), WorldUp(glm::vec3(0,1,0)), Yaw(-90.0), Pitch(0.0) {
+	Camera(glm::vec3 pos, glm::vec3 front) : Position(pos), Front(front), WorldUp(glm::vec3(0, 1, 0)), FOV(45), Near(0.1f), Far(100.f), Yaw(-90.0), Pitch(0.0) {
 		updateCamera();
+		Camera::Current = this;
 	}
 
 	glm::mat4 GetViewMatrix() {
 		return glm::lookAt(Position, Position + Front, Up);
+	}
+
+	glm::mat4 GetProjectionMatrix() {
+		return glm::perspective(glm::radians(FOV), (float)Screen::Width / Screen::Height, Near, Far);
 	}
 
 	void Update() {
@@ -45,7 +51,7 @@ public:
 			lr_move += move;
 		if (InputManager::GetKey(GLFW_KEY_A))
 			lr_move -= move;
-		
+
 		Position += Front * fb_move + Right * lr_move;
 	}
 
@@ -70,12 +76,18 @@ public:
 	}
 
 public:
+	static Camera* Current;
+
 	glm::vec3 Position;
 
 	glm::vec3 Front;
 	glm::vec3 Up;
 	glm::vec3 Right;
 	glm::vec3 WorldUp;
+
+	float FOV;
+	float Near;
+	float Far;
 
 private:
 	void updateCamera() {

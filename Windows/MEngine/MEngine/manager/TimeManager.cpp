@@ -1,3 +1,5 @@
+#include <GLFW/glfw3.h>
+
 #include "TimeManager.h"
 
 float TimeManager::Delta = 0.f;

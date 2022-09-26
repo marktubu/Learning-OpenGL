@@ -1,11 +1,12 @@
 #pragma once
 
 #include <list>
-
-using namespace std;
+#include <functional>
 
 class Node {
 public:
+    virtual ~Node() {}
+
     void AddChild(Node* node) {
         if (node->Parent() != nullptr) {
             node->Parent()->RemoveChild(node);
@@ -33,6 +34,8 @@ public:
     ~Tree();
 
     Node* Root() { return root_node; }
+
+    static void Post(Node* node, std::function<void(Node*)> func);
 
 private:
     Node* root_node;

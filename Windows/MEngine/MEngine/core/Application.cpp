@@ -4,26 +4,28 @@
 #include "../manager/TimeManager.h"
 #include "../graphics/Camera.h"
 #include "../graphics/Model.h"
+#include "Tree.h"
+#include "GameObject.h"
+#include "../graphics/MeshRenderer.h"
+
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
 
 GLFWwindow* Application::window;
-FilePath Application::dataPath;
 
-Shader* shader;
 Camera* camera;
 Model* model0;
 
-void Application::Init(const FilePath& path) {
-    dataPath = path;
+void Application::Init() {
     Application::InitWindow();
 
     InputManager::Init(window);
 
-    shader = new Shader("../resources/shader/geo.vs"
-        , "../resources/shader/geo.fs"
-        , "../resources/shader/geo.gs");
-
     model0 = new Model("../resources/objects/backpack/backpack.obj");
     camera = new Camera(glm::vec3(0, 0, 5), glm::vec3(0, 0, -1));
+
+    glEnable(GL_DEPTH_TEST);
 }
 bool init = false;
 
@@ -41,15 +43,14 @@ void Application::Update() {
     // float time = glfwGetTime();
     // shader.setFloat("time", time);
 
-    glm::mat4 model = glm::mat4(1.0);
-    glm::mat4 view = camera->GetViewMatrix();
-    glm::mat4 projection = glm::perspective(glm::radians(45.f), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
-    shader->Use();
-    shader->setMat4("model", model);
-    shader->setMat4("view", view);
-    shader->setMat4("projection", projection);
-
-    model0->Draw(*shader);
+    auto root = model0->root;
+    Tree::Post(root, [](Node* node) {
+        GameObject* game_object = dynamic_cast<GameObject *>(node);
+        auto renderer = game_object->GetComponent<MeshRenderer>();
+        if (renderer != nullptr) {
+            renderer->Render();
+        }
+        });
 
     // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
     // -------------------------------------------------------------------------------
@@ -63,13 +64,4 @@ void Application::Exit() {
 
 bool Application::ShouldClose() {
     return glfwWindowShouldClose(window);
-}
-
-FilePath Application::GetPath(const FilePath& path) {
-    return dataPath + path;
-}
-
-FilePath Application::GetRes(const FilePath& path) {
-    static const FilePath resPath = std::string("resources/");
-    return dataPath + resPath + path;
 }

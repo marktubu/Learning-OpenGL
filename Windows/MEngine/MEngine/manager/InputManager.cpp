@@ -1,11 +1,11 @@
 
+#include <glad/glad.h>
+
 #include "InputManager.h"
+#include "../util/Screen.h"
 
-const unsigned int SCR_WIDTH = 800;
-const unsigned int SCR_HEIGHT = 600;
-
-float lastX = SCR_WIDTH / 2.0f;
-float lastY = SCR_HEIGHT / 2.0f;
+float lastX = Screen::Width / 2.0f;
+float lastY = Screen::Height / 2.0f;
 bool firstMouse = true;
 
 GLFWwindow* InputManager::window;

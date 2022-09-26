@@ -8,12 +8,12 @@ struct Material
 	float shininess;
 };
 
-in vec2 oTexCoord;
+in vec2 TexCoord;
 
 uniform Material material;
 
 void main()
 {
-	vec4 color = texture(material.texture_diffuse1, oTexCoord);
+	vec4 color = texture(material.texture_diffuse1, TexCoord);
 	FragColor = color;
 }

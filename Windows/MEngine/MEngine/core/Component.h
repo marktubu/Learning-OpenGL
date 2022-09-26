@@ -1,10 +1,14 @@
 #pragma once
 
+#include <rttr/registration>
+using namespace rttr;
+
 class GameObject;
 class Component {
 public:
 	Component();
-	virtual ~Component()=default;
+	virtual ~Component() = default;
+
 
 public:
 	GameObject* gameObject;
@@ -22,4 +26,5 @@ public:
 
 private:
 	
+RTTR_ENABLE();
 };
