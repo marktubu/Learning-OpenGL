@@ -2,8 +2,9 @@
 
 #include <vector>
 
-#include "Shader.h"
 #include "Texture.h"
+
+class Shader;
 
 class Material {
 public:

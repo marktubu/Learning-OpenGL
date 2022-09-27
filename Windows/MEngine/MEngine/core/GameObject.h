@@ -4,11 +4,14 @@
 
 #include "Tree.h"
 #include "Component.h"
+#include <rttr/registration>
+using namespace rttr;
 
 class GameObject : public Node {
 public:
     GameObject(std::string name);
     ~GameObject();
+
 
 
     template<class T=Component>
@@ -32,6 +35,7 @@ public:
         }
         return nullptr;
     }
+
 
 
     void AttachComponent(Component* comp);

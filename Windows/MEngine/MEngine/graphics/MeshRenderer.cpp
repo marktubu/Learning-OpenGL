@@ -8,6 +8,7 @@
 #include "Mesh.h"
 #include "Camera.h"
 #include "Texture.h"
+#include "Shader.h"
 
 void MeshRenderer::Render()
 {

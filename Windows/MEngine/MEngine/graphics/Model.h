@@ -11,7 +11,6 @@
 
 class MeshRenderer;
 class GameObject;
-class Shader;
 
 class Model {
 public:
@@ -23,8 +22,6 @@ public:
 	Model(const std::string path) {
 		loadModel(path);
 	}
-
-	void Draw(Shader shader);
 
 private:
 	void loadModel(std::string path);

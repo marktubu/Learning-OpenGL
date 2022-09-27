@@ -15,11 +15,15 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
+#include "../script/Lua.h"
+#include "../util/MFile.h"
+
 GLFWwindow* Application::window;
 
 Model* model0;
 
 void Application::Init() {
+    
     Application::InitWindow();
 
     InputManager::Init(window);
@@ -32,6 +36,7 @@ void Application::Init() {
     auto s1 = SceneManager::LoadScene("s1");
     s1->root->AddChild(model0->root);
 
+    //Lua::Test();
     glDisable(GL_DEPTH_TEST);
 }
 

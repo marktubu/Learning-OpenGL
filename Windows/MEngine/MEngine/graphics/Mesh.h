@@ -5,9 +5,7 @@
 
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
-
-#include "Shader.h"
-
+#include <glad/glad.h>
 
 #define MAX_BONE_INFLUENCE 4
 
@@ -33,9 +31,6 @@ public:
 		this->indices = indices;
 
 		setupMesh();
-	}
-	void Draw(Shader shader) {
-		
 	}
 
 private:

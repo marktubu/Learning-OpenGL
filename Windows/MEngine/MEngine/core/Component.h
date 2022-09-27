@@ -1,7 +1,6 @@
 #pragma once
 
 #include <rttr/registration>
-using namespace rttr;
 
 class GameObject;
 class Component {

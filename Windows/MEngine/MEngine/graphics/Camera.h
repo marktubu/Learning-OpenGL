@@ -7,6 +7,7 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
+#include "../core/Component.h"
 
 enum MoveDir {
 	Front,
@@ -18,7 +19,7 @@ enum MoveDir {
 const float MoveSpeed = 1.f;
 const float Sensitivity = 0.01f;
 
-class Camera {
+class Camera : public Component {
 public:
 	Camera(glm::vec3 pos, float yaw = -90.f, int depth = 0) : Position(pos), 
 		Yaw(yaw), Depth(depth), Pitch(0.0),

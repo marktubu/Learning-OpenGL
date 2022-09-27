@@ -1,7 +1,6 @@
 
 #include "GameObject.h"
-#include <rttr/registration>
-using namespace rttr;
+#include "Component.h"
 
 Tree GameObject::game_object_tree;
 

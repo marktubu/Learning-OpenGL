@@ -81,6 +81,9 @@
     <ClInclude Include="manager\SceneManager.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="script\Lua.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="core\GameObject.cpp">
@@ -135,6 +138,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="manager\SceneManager.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="script\Lua.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
