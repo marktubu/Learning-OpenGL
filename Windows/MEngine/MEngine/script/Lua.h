@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 #include <assert.h>
+class Node;
 
 class base_t
 {
@@ -46,7 +47,9 @@ public:
 
 class Lua {
 public:
-    static void Test();
+    static void Test1();
+
+    static Node* Test();
 
     static void Test2();
 };

@@ -10,7 +10,7 @@ public:
 
 
 public:
-	GameObject* gameObject;
+	GameObject* gameObject = nullptr;
 
 public:
 	virtual void Awake();
