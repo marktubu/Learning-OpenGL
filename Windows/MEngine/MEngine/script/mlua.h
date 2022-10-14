@@ -4,6 +4,7 @@
 
 #include <lua/lua.hpp>
 #include "mlua_op.h"
+#include "mlua_reg.h"
 
 //! 表示void类型，由于void类型不能return，用void_ignore_t适配
 template<typename T>
@@ -26,9 +27,32 @@ struct void__t<void>
 
 class mlua {
 public:
-	mlua() {
+	mlua(bool b = false): enable_mod_func(b) {
 		ls = luaL_newstate();
 		luaL_openlibs(ls);
+	}
+
+	void setModFuncFlag(bool b) { enable_mod_func = b; }
+	
+	template<typename T>
+	void reg(T a)
+	{
+		a(ls);
+	}
+
+	template<typename T>
+	int get_global_var(const std::string& name, T& ret) {
+		lua_getglobal(ls, name.c_str());
+		int r = lua_op_stack<T>::to_value(ls, -1, ret);
+		lua_pop(ls, 1);
+		return r;
+	}
+
+	template<typename T>
+	int set_global_var(const std::string& name, const T& val) {
+		lua_op_stack<T>::push_stack(ls, val);
+		lua_setglobal(ls, name.c_str());
+		return 0;
 	}
 
 	void add_package_path(std::string path) {
@@ -58,8 +82,13 @@ public:
 		}
 	}
 
-	// 返回值 当前已有的参数个数
+	// 返回值 当前已有的参数个数  :调用方式返回1，其他调用方式返回0
 	int getFuncByName(std::string name) {
+		if (false == enable_mod_func)
+		{
+			lua_getglobal(ls, name.c_str());
+			return 0;
+		}
 		int pos = name.find(".");
 		if (pos != std::string::npos) {
 			auto t = name.substr(0, pos);
@@ -155,7 +184,7 @@ public:
 
 		lua_op_stack<ARG1>::push_stack(ls, arg1);
 		lua_op_stack<ARG2>::push_stack(ls, arg2);
-		lua_op_stack<ARG2>::push_stack(ls, arg3);
+		lua_op_stack<ARG3>::push_stack(ls, arg3);
 
 		if (lua_pcall(ls, nargs + 3, 1, 0)) {
 			mlua_tool::error("call function error " + std::string(func_name));
@@ -177,8 +206,8 @@ public:
 
 		lua_op_stack<ARG1>::push_stack(ls, arg1);
 		lua_op_stack<ARG2>::push_stack(ls, arg2);
-		lua_op_stack<ARG2>::push_stack(ls, arg3);
-		lua_op_stack<ARG1>::push_stack(ls, arg4);
+		lua_op_stack<ARG3>::push_stack(ls, arg3);
+		lua_op_stack<ARG4>::push_stack(ls, arg4);
 
 		if (lua_pcall(ls, nargs + 4, 1, 0)) {
 			mlua_tool::error("call function error " + std::string(func_name));
@@ -200,9 +229,9 @@ public:
 
 		lua_op_stack<ARG1>::push_stack(ls, arg1);
 		lua_op_stack<ARG2>::push_stack(ls, arg2);
-		lua_op_stack<ARG2>::push_stack(ls, arg3);
-		lua_op_stack<ARG1>::push_stack(ls, arg4);
-		lua_op_stack<ARG2>::push_stack(ls, arg5);
+		lua_op_stack<ARG3>::push_stack(ls, arg3);
+		lua_op_stack<ARG4>::push_stack(ls, arg4);
+		lua_op_stack<ARG5>::push_stack(ls, arg5);
 
 		if (lua_pcall(ls, nargs + 5, 1, 0)) {
 			mlua_tool::error("call function error " + std::string(func_name));
@@ -224,10 +253,10 @@ public:
 
 		lua_op_stack<ARG1>::push_stack(ls, arg1);
 		lua_op_stack<ARG2>::push_stack(ls, arg2);
-		lua_op_stack<ARG2>::push_stack(ls, arg3);
-		lua_op_stack<ARG1>::push_stack(ls, arg4);
-		lua_op_stack<ARG2>::push_stack(ls, arg5);
-		lua_op_stack<ARG2>::push_stack(ls, arg6);
+		lua_op_stack<ARG3>::push_stack(ls, arg3);
+		lua_op_stack<ARG4>::push_stack(ls, arg4);
+		lua_op_stack<ARG5>::push_stack(ls, arg5);
+		lua_op_stack<ARG6>::push_stack(ls, arg6);
 
 		if (lua_pcall(ls, nargs + 6, 1, 0)) {
 			mlua_tool::error("call function error " + std::string(func_name));
@@ -245,4 +274,5 @@ public:
 
 public:
 	lua_State* ls;
+	bool enable_mod_func;
 };

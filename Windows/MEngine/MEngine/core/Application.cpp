@@ -7,6 +7,7 @@
 #include "../graphics/Model.h"
 #include "Tree.h"
 #include "GameObject.h"
+#include "Component.h"
 #include "../graphics/MeshRenderer.h"
 #include "../graphics/Scene.h"
 #include "../manager/SceneManager.h"
@@ -28,15 +29,17 @@ void Application::Init() {
 
     InputManager::Init(window);
 
-    model0 = new Model(MFile::GetRes("objects/backpack/backpack.obj"));
+    //model0 = new Model(MFile::GetRes("objects/backpack/backpack.obj";
     new Camera(glm::vec3(0, 0, 8));
     //auto cam2 = new Camera(glm::vec3(8, 0, 3), -180);
     //cam2->ClearFlags = 0;
     //cam2->CullingMask = 0;
     auto s1 = SceneManager::LoadScene("s1");
-    s1->root->AddChild(model0->root);
+    //s1->root->AddChild(model0->root);
 
-    //Lua::Test();
+    Node* node = Lua::Test();
+    s1->root->AddChild(node);
+    //Lua::Test2();
     glDisable(GL_DEPTH_TEST);
 }
 

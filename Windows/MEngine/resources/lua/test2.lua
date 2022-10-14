@@ -17,7 +17,7 @@ function Mod:funcTest1(arg1, arg2)
     root = model.root
     return true
 end
-Mod.funcTest1()
+
 -- 测试调用lua
 function test_func(arg1, arg2, arg3, arg4)
     print("in test_func:", arg1, arg2, arg3, arg4)
@@ -25,7 +25,7 @@ function test_func(arg1, arg2, arg3, arg4)
     vc = {1,2,3}
     lt = {4,5,6}
     st = {7,8,9}
-    dumy(mp, vc, lt, st)
+    -- dumy(mp, vc, lt, st)
     return arg1
 end
 
@@ -63,7 +63,9 @@ function test_object(foo_obj)
     print("base ptr:", base:get_pointer())
     -- 测试C++对象函数
     foo_obj:print(12333, base)
+    print("base:delete")
     base:delete()
+    print("foo_obj:dump")
     --基类的函数
     foo_obj:dump()
     -- 测试C++ 对象属性

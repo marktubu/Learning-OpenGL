@@ -13,6 +13,10 @@ end
 Mod = {}
 function Mod:funcTest1(arg1, arg2)
     print("in funcTest1:", self, arg1, arg2)
+    local model = Model:new("../resources/objects/cyborg/cyborg.obj")
+    -- model 为userdata，仅保存Model实例的指针，该函数返回后，
+    -- root 为userdata，仅保存Node指针
+    root = model.root
     return true
 end
 

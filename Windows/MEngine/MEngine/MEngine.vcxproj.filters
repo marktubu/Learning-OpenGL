@@ -84,6 +84,15 @@
     <ClInclude Include="script\Lua.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="script\mlua_reg.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="script\mlua.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="script\mlua_op.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="core\GameObject.cpp">

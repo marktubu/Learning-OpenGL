@@ -11,15 +11,16 @@
 
 class MeshRenderer;
 class GameObject;
+class Node;
 
 class Model {
 public:
 	std::vector<Texture> textures_loaded;
 	std::vector<Mesh> meshes;
 	std::string directory;
-	GameObject* root;
+	Node* root;
 
-	Model(const std::string path) {
+	Model(std::string path) {
 		loadModel(path);
 	}
 

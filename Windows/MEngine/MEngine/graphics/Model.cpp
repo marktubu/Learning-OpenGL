@@ -17,8 +17,9 @@ void Model::loadModel(std::string path) {
 	}
 
 	directory = path.substr(0, path.find_last_of('/'));
-	root = new GameObject(scene->mRootNode->mName.C_Str());
-	processNode(scene->mRootNode, scene, root);
+	auto go = new GameObject(scene->mRootNode->mName.C_Str());
+	root = dynamic_cast<Node*>(go);
+	processNode(scene->mRootNode, scene, go);
 }
 
 void Model::processNode(aiNode* node, const aiScene* scene, GameObject* go) {
