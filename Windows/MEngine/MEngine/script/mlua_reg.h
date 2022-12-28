@@ -42,18 +42,18 @@ struct real_class_property_processor_t
 
 	void* property_pos;
 };
+template<typename PROPERTY_TYPE>
+struct userdata_for_class_property_t : public real_class_property_processor_t
+{
+    typedef class_property_info_t<PROPERTY_TYPE> real_class_property_info_t;
+    real_class_property_info_t                   property_info;
+};
 
 template<typename FUNC_TYPE>
 struct userdata_for_function_t
 {
 	userdata_for_function_t(FUNC_TYPE func_) : real_func(func_) {}
 	FUNC_TYPE   real_func;
-};
-template<typename PROPERTY_TYPE>
-struct userdata_for_class_property_t : public real_class_property_processor_t
-{
-	typedef class_property_info_t<PROPERTY_TYPE> real_class_property_info_t;
-	real_class_property_info_t                   property_info;
 };
 
 template<typename CLASS_TYPE>
@@ -382,11 +382,11 @@ public:
          */
 
         udata_t* pu = (udata_t*)lua_newuserdata(ls, sizeof(udata_t));
-        pu->property_info.property_pos = p_;
+        pu->property_info.property_pos = p_;  // 属性地址（指针）
         int udata_index = lua_gettop(ls);
         pu->index_impl_func = process_index;
         pu->newindex_impl_func = process_newindex;
-        pu->property_pos = (void*)(&(pu->property_info));
+        pu->property_pos = (void*)(&(pu->property_info)); // 为何要一个新的 property_pos 指向原本的 property_pos?
 
         luaL_getmetatable(ls, lua_typeinfo_t<CLASS_TYPE>::get_name());
         lua_pushstring(ls, property_name_.c_str());
@@ -431,6 +431,37 @@ public:
         return *this;
     }
 
+    mlua_reg& def_property(const std::string& property_name)
+    {
+        if (m_class_name.empty())
+        {
+            lua_CFunction lua_func = function_traits_t<FUNC>::lua_function;
+
+            void* user_data_ptr = lua_newuserdata(ls, sizeof(func_));
+            new(user_data_ptr) FUNC(func_);
+
+            lua_pushcclosure(ls, lua_func, 1);
+            lua_setglobal(ls, func_name_.c_str());
+        }
+        else
+        {
+            lua_CFunction lua_func = function_traits_t<FUNC>::lua_function;
+
+            void* user_data_ptr = lua_newuserdata(ls, sizeof(func_));
+            new(user_data_ptr) FUNC(func_);
+
+            lua_pushcclosure(ls, lua_func, 1);
+            //lua_setglobal(ls, func_name_.c_str());
+
+            lua_getglobal(ls, (m_class_name).c_str());
+            lua_pushstring(ls, func_name_.c_str());
+            lua_pushvalue(ls, -3);
+            lua_settable(ls, -3);
+
+            lua_pop(ls, 2);
+        }
+        return *this;
+    }
 
 private:
 	lua_State* ls;

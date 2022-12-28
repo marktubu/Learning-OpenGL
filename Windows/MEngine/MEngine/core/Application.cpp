@@ -37,9 +37,9 @@ void Application::Init() {
     auto s1 = SceneManager::LoadScene("s1");
     //s1->root->AddChild(model0->root);
 
-    Node* node = Lua::Test();
-    s1->root->AddChild(node);
-    //Lua::Test2();
+    //Node* node = Lua::Test();
+    //s1->root->AddChild(node);
+    Lua::Test2();
     glDisable(GL_DEPTH_TEST);
 }
 

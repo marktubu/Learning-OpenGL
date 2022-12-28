@@ -13,8 +13,8 @@ end
 Mod = {}
 function Mod:funcTest1(arg1, arg2)
     print("in funcTest1:", self, arg1, arg2)
-    local model = Model:new("../resources/objects/cyborg/cyborg.obj")
-    root = model.root
+    --local model = Model:new("../resources/objects/cyborg/cyborg.obj")
+    --root = model.root
     return true
 end
 

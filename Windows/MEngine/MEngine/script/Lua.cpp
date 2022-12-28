@@ -13,6 +13,8 @@ using namespace std;
 #include "../core/Tree.h"
 //#include "../core/GameObject.h"
 
+int foo_t::s = 0;
+
 //! lua talbe 可以自动转换为stl 对象
 void dumy(map<string, string> ret, vector<int> a, list<string> b, set<int64_t> c)
 {
@@ -34,7 +36,7 @@ static void lua_reg(lua_State* ls)
 //! 注册子类，ctor(int) 为构造函数， foo_t为类型名称， base_t为继承的基类名称
     mlua_reg<foo_t, ctor(int)>(ls, "foo_t", "base_t")
         .def(&foo_t::print, "print")        //! 子类的函数
-        .def(&foo_t::a, "a");               //! 子类的字段
+        .def(&foo_t::a, "a");             //! 子类的字段
 
     //mlua_reg<>(ls).def(&dumy, "dumy");                //! 注册静态函数
 
@@ -94,7 +96,7 @@ Node* Lua::Test() {
 #else
         fflua.do_file("test.lua");
 #endif
-        mlua_tool::dump_stack(fflua.ls);
+        
         int arg1 = 12;
         float arg2 = 2;
         bool ret = fflua.call<bool>("Mod:funcTest1", arg1, arg2);
@@ -145,6 +147,7 @@ void Lua::Test2()
         fflua.call<bool>("Mod:funcTest1", arg1, arg2);
 
         //! 调用lua函数，c++ 对象作为参数, foo_t 必须被注册过
+        foo_t::s = 1234;
         foo_t* foo_ptr = new foo_t(456);
         fflua.call<void>("test_object", foo_ptr);
 

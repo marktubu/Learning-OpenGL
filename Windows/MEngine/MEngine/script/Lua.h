@@ -36,6 +36,7 @@ public:
         printf("in %s\n", __FUNCTION__);
     }
     int a;
+    static int s;
 };
 
 class clazz {
